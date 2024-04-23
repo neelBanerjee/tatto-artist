@@ -1,0 +1,154 @@
+[18-Dec-2023 17:28:28 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[18-Dec-2023 17:29:02 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[18-Dec-2023 17:29:03 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[19-Dec-2023 03:48:23 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[19-Dec-2023 03:53:29 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[19-Dec-2023 03:56:04 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[19-Dec-2023 04:00:29 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[19-Dec-2023 17:43:19 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[21-Dec-2023 17:13:40 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Dec-2023 10:59:37 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php:912
+Stack trace:
+#0 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(912): ReflectionClass->__construct('view')
+#1 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate\Container\Container->build('view')
+#2 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(955): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(731): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(940): Illuminate\Container\Container->make('view', Array)
+#5 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(1454): Illuminate\Foundation\Application->make('view')
+#6 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(237): Illuminate\Container\Container->offsetGet('view')
+#7 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(208): Illuminate\Support\Facades\Facade::resolveFacadeInstance('view')
+#8 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(349): Illuminate\Support\Facades\Facade::getFacadeRoot()
+#9 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/RegisterErrorViewPaths.php(18): Illuminate\Support\Facades\Facade::__callStatic('replaceNamespac...', Array)
+#10 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(744): Illuminate\Foundation\Exceptions\RegisterErrorViewPaths->__invoke()
+#11 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(719): Illuminate\Foundation\Exceptions\Handler->registerErrorViewPaths()
+#12 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(650): Illuminate\Foundation\Exceptions\Handler->renderHttpException(Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#13 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(556): Illuminate\Foundation\Exceptions\Handler->prepareResponse(Object(Illuminate\Http\Request), Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#14 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(473): Illuminate\Foundation\Exceptions\Handler->renderExceptionResponse(Object(Illuminate\Http\Request), Object(Illuminate\Contracts\Container\BindingResolutionException))
+#15 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(217): Illuminate\Foundation\Exceptions\Handler->render(Object(Illuminate\Http\Request), Object(Illuminate\Contracts\Container\BindingResolutionException))
+#16 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(194): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse(Object(Illuminate\Contracts\Container\BindingResolutionException))
+#17 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(254): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException(Object(Illuminate\Contracts\Container\BindingResolutionException))
+#18 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}(Object(Illuminate\Contracts\Container\BindingResolutionException))
+#19 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php:914
+Stack trace:
+#0 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate\Container\Container->build('view')
+#1 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(955): Illuminate\Container\Container->resolve('view', Array, true)
+#2 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(731): Illuminate\Foundation\Application->resolve('view', Array)
+#3 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(940): Illuminate\Container\Container->make('view', Array)
+#4 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(1454): Illuminate\Foundation\Application->make('view')
+#5 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(237): Illuminate\Container\Container->offsetGet('view')
+#6 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(208): Illuminate\Support\Facades\Facade::resolveFacadeInstance('view')
+#7 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(349): Illuminate\Support\Facades\Facade::getFacadeRoot()
+#8 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/RegisterErrorViewPaths.php(18): Illuminate\Support\Facades\Facade::__callStatic('replaceNamespac...', Array)
+#9 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(744): Illuminate\Foundation\Exceptions\RegisterErrorViewPaths->__invoke()
+#10 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(719): Illuminate\Foundation\Exceptions\Handler->registerErrorViewPaths()
+#11 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(650): Illuminate\Foundation\Exceptions\Handler->renderHttpException(Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#12 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(556): Illuminate\Foundation\Exceptions\Handler->prepareResponse(Object(Illuminate\Http\Request), Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#13 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(473): Illuminate\Foundation\Exceptions\Handler->renderExceptionResponse(Object(Illuminate\Http\Request), Object(Illuminate\Contracts\Container\BindingResolutionException))
+#14 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(217): Illuminate\Foundation\Exceptions\Handler->render(Object(Illuminate\Http\Request), Object(Illuminate\Contracts\Container\BindingResolutionException))
+#15 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(194): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse(Object(Illuminate\Contracts\Container\BindingResolutionException))
+#16 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(254): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException(Object(Illuminate\Contracts\Container\BindingResolutionException))
+#17 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}(Object(Illuminate\Contracts\Container\BindingResolutionException))
+#18 {main}
+  thrown in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 914
+[31-Dec-2023 10:59:43 UTC] PHP Fatal error:  Uncaught ReflectionException: Class "view" does not exist in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php:912
+Stack trace:
+#0 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(912): ReflectionClass->__construct('view')
+#1 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate\Container\Container->build('view')
+#2 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(955): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(731): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(940): Illuminate\Container\Container->make('view', Array)
+#5 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(1454): Illuminate\Foundation\Application->make('view')
+#6 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(237): Illuminate\Container\Container->offsetGet('view')
+#7 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(208): Illuminate\Support\Facades\Facade::resolveFacadeInstance('view')
+#8 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(349): Illuminate\Support\Facades\Facade::getFacadeRoot()
+#9 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/RegisterErrorViewPaths.php(18): Illuminate\Support\Facades\Facade::__callStatic('replaceNamespac...', Array)
+#10 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(744): Illuminate\Foundation\Exceptions\RegisterErrorViewPaths->__invoke()
+#11 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(719): Illuminate\Foundation\Exceptions\Handler->registerErrorViewPaths()
+#12 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(650): Illuminate\Foundation\Exceptions\Handler->renderHttpException(Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#13 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(556): Illuminate\Foundation\Exceptions\Handler->prepareResponse(Object(Illuminate\Http\Request), Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#14 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(473): Illuminate\Foundation\Exceptions\Handler->renderExceptionResponse(Object(Illuminate\Http\Request), Object(Illuminate\Contracts\Container\BindingResolutionException))
+#15 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(217): Illuminate\Foundation\Exceptions\Handler->render(Object(Illuminate\Http\Request), Object(Illuminate\Contracts\Container\BindingResolutionException))
+#16 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(194): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse(Object(Illuminate\Contracts\Container\BindingResolutionException))
+#17 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(254): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException(Object(Illuminate\Contracts\Container\BindingResolutionException))
+#18 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}(Object(Illuminate\Contracts\Container\BindingResolutionException))
+#19 {main}
+
+Next Illuminate\Contracts\Container\BindingResolutionException: Target class [view] does not exist. in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php:914
+Stack trace:
+#0 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate\Container\Container->build('view')
+#1 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(955): Illuminate\Container\Container->resolve('view', Array, true)
+#2 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(731): Illuminate\Foundation\Application->resolve('view', Array)
+#3 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(940): Illuminate\Container\Container->make('view', Array)
+#4 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php(1454): Illuminate\Foundation\Application->make('view')
+#5 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(237): Illuminate\Container\Container->offsetGet('view')
+#6 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(208): Illuminate\Support\Facades\Facade::resolveFacadeInstance('view')
+#7 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(349): Illuminate\Support\Facades\Facade::getFacadeRoot()
+#8 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/RegisterErrorViewPaths.php(18): Illuminate\Support\Facades\Facade::__callStatic('replaceNamespac...', Array)
+#9 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(744): Illuminate\Foundation\Exceptions\RegisterErrorViewPaths->__invoke()
+#10 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(719): Illuminate\Foundation\Exceptions\Handler->registerErrorViewPaths()
+#11 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(650): Illuminate\Foundation\Exceptions\Handler->renderHttpException(Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#12 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(556): Illuminate\Foundation\Exceptions\Handler->prepareResponse(Object(Illuminate\Http\Request), Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#13 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(473): Illuminate\Foundation\Exceptions\Handler->renderExceptionResponse(Object(Illuminate\Http\Request), Object(Illuminate\Contracts\Container\BindingResolutionException))
+#14 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(217): Illuminate\Foundation\Exceptions\Handler->render(Object(Illuminate\Http\Request), Object(Illuminate\Contracts\Container\BindingResolutionException))
+#15 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(194): Illuminate\Foundation\Bootstrap\HandleExceptions->renderHttpResponse(Object(Illuminate\Contracts\Container\BindingResolutionException))
+#16 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(254): Illuminate\Foundation\Bootstrap\HandleExceptions->handleException(Object(Illuminate\Contracts\Container\BindingResolutionException))
+#17 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}(Object(Illuminate\Contracts\Container\BindingResolutionException))
+#18 {main}
+  thrown in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 914
+[31-Dec-2023 11:02:15 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Dec-2023 11:02:23 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Dec-2023 11:03:06 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Dec-2023 11:06:04 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Dec-2023 11:06:27 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Dec-2023 11:06:27 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Dec-2023 11:16:28 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Jan-2024 10:18:26 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Jan-2024 10:21:24 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Jan-2024 10:23:10 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Jan-2024 10:23:23 UTC] PHP Warning:  require(/home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/../symfony/translation/Resources/functions.php): Failed to open stream: No such file or directory in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/autoload_real.php on line 41
+[31-Jan-2024 10:23:23 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/../symfony/translation/Resources/functions.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/autoload_real.php(45): {closure}('a1105708a18b769...', '/home/uueziobj/...')
+#1 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/autoload.php(25): ComposerAutoloaderInitd0916371ad6944219d713280facc6746::getLoader()
+#2 /home/uueziobj/public_html/sweetdevelopers.com/artist/public/index.php(34): require('/home/uueziobj/...')
+#3 /home/uueziobj/public_html/sweetdevelopers.com/artist/server.php(21): require_once('/home/uueziobj/...')
+#4 {main}
+  thrown in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/autoload_real.php on line 41
+[31-Jan-2024 10:23:26 UTC] PHP Warning:  include(/home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/../symfony/http-kernel/HttpKernelInterface.php): Failed to open stream: No such file or directory in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/ClassLoader.php on line 576
+[31-Jan-2024 10:23:26 UTC] PHP Warning:  include(): Failed opening '/home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/../symfony/http-kernel/HttpKernelInterface.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/ClassLoader.php on line 576
+[31-Jan-2024 10:23:26 UTC] PHP Fatal error:  Uncaught Error: Interface "Symfony\Component\HttpKernel\HttpKernelInterface" not found in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:34
+Stack trace:
+#0 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/ClassLoader.php(576): include()
+#1 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/ClassLoader.php(427): Composer\Autoload\{closure}('/home/uueziobj/...')
+#2 /home/uueziobj/public_html/sweetdevelopers.com/artist/bootstrap/app.php(14): Composer\Autoload\ClassLoader->loadClass('Illuminate\\Foun...')
+#3 /home/uueziobj/public_html/sweetdevelopers.com/artist/public/index.php(47): require_once('/home/uueziobj/...')
+#4 /home/uueziobj/public_html/sweetdevelopers.com/artist/server.php(21): require_once('/home/uueziobj/...')
+#5 {main}
+  thrown in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/Application.php on line 34
+[31-Jan-2024 10:23:28 UTC] PHP Warning:  require(/home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php): Failed to open stream: No such file or directory in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/autoload_real.php on line 41
+[31-Jan-2024 10:23:28 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/../laravel/framework/src/Illuminate/Foundation/helpers.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/autoload_real.php(45): {closure}('f0906e6318348a7...', '/home/uueziobj/...')
+#1 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/autoload.php(25): ComposerAutoloaderInitd0916371ad6944219d713280facc6746::getLoader()
+#2 /home/uueziobj/public_html/sweetdevelopers.com/artist/public/index.php(34): require('/home/uueziobj/...')
+#3 /home/uueziobj/public_html/sweetdevelopers.com/artist/server.php(21): require_once('/home/uueziobj/...')
+#4 {main}
+  thrown in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/autoload_real.php on line 41
+[31-Jan-2024 10:23:32 UTC] PHP Warning:  require(/home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/laravel/framework/src/Illuminate/Events/functions.php): Failed to open stream: No such file or directory in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/autoload_real.php on line 41
+[31-Jan-2024 10:23:32 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/../laravel/framework/src/Illuminate/Events/functions.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/autoload_real.php(45): {closure}('c7a3c339e7e14b6...', '/home/uueziobj/...')
+#1 /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/autoload.php(25): ComposerAutoloaderInitd0916371ad6944219d713280facc6746::getLoader()
+#2 /home/uueziobj/public_html/sweetdevelopers.com/artist/public/index.php(34): require('/home/uueziobj/...')
+#3 /home/uueziobj/public_html/sweetdevelopers.com/artist/server.php(21): require_once('/home/uueziobj/...')
+#4 {main}
+  thrown in /home/uueziobj/public_html/sweetdevelopers.com/artist/vendor/composer/autoload_real.php on line 41
+[31-Jan-2024 10:23:42 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Jan-2024 10:23:42 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Jan-2024 10:24:01 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Jan-2024 10:24:04 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Jan-2024 10:24:05 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Jan-2024 10:28:11 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
+[31-Jan-2024 10:28:50 UTC] PHP Warning:  Module "memcached" is already loaded in Unknown on line 0
