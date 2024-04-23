@@ -29,7 +29,11 @@ class ArtworkController extends Controller
      */
     public function index()
     {
-        $data['artworks'] =  $this->artworkInterface->getAllArtwork();
+        if(Auth::guard('admins')->check()){
+            $data['artworks'] =  $this->artworkInterface->getAllArtwork();
+        }else{
+            $data['artworks'] =  $this->artworkInterface->getSalesPersonArtwork();
+        }    
         return view('admin.artwork.index', $data);
     }
 

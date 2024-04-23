@@ -116,8 +116,9 @@
                                 @endif        
                             </tbody>
                         </table>
-
-                        {{$artworks->links()}}
+                        @if(count($artworks)>0)  
+                            {{$artworks->links()}}
+                        @endif    
                     </div>
                 </div>
             </div>

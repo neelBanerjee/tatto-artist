@@ -27,7 +27,7 @@
     <!-- /# row -->
     <section id="main-content">
         <div class="row">
-            @if (Auth::guard('admins')->check())
+            @if (Auth::guard('admins')->check() || Auth::guard('sales')->check())
                 <div class="col-lg-3">
                     <div class="card">
                         <div class="stat-widget-one">

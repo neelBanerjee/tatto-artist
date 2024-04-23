@@ -29,60 +29,68 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($artists as $artist)
-                             
-                                    <tr>
-                                        <td>#</td>
-                                        <td>
-                                            {{ $artist->name }}
-                                            
-                                        </td>
-                                        <td>
-                                            {{ $artist->username }}
-                                            
-                                        </td>
-                                        <td>
-                                            {{ $artist->email }}
-                                            
-                                        </td>
-                                        <td>
-                                            @if (!empty($artist->profile_image) && File::exists(public_path('storage/ProfileImage/' . $artist->profile_image)))
-                                            <img style="height: 82px; width: 82px;" src="{{ asset('storage/ProfileImage/'.$artist->profile_image) }}" alt="">
+                                @if(count($artists)>0)
+                                    @foreach ($artists as $artist)
+                                
+                                        <tr>
+                                            <td>#</td>
+                                            <td>
+                                                {{ $artist->name }}
                                                 
-                                            @else
-                                            <img style="height: 82px; width: 82px;" src="{{asset('noimg.png') }}" alt="">
+                                            </td>
+                                            <td>
+                                                {{ $artist->username }}
                                                 
-                                            @endif
+                                            </td>
+                                            <td>
+                                                {{ $artist->email }}
+                                                
+                                            </td>
+                                            <td>
+                                                @if (!empty($artist->profile_image) && File::exists(public_path('storage/ProfileImage/' . $artist->profile_image)))
+                                                <img style="height: 82px; width: 82px;" src="{{ asset('storage/ProfileImage/'.$artist->profile_image) }}" alt="">
+                                                    
+                                                @else
+                                                <img style="height: 82px; width: 82px;" src="{{asset('noimg.png') }}" alt="">
+                                                    
+                                                @endif
+                                                
+                                                
+                                            </td>
                                             
-                                            
-                                        </td>
-                                        
-                                        {{-- <td><span id="status-btn{{ $artist->id }}">
-                                            <button class="btn btn-sm {{ $artist->status == 'Available' ? 'btn-success' : ($artist->status == 'Inactive' ? 'bg-danger' : 'bg-warning'); }}"  onclick="changeStatus('{{ $artist->id }}', {{ $artist->id}})" >
-                                                {{ $artist->status }}
-                                            </button>
-                                        </span>
-                                        </td> --}}
-                                        <td>
-                                            <a href="{{ route('artists.show', encrypt($artist->id)) }}"><i
-                                                class="ti-eye btn btn-sm btn-success"></i></a>
-                                            <a href="{{ route('artists.edit', encrypt($artist->id)) }}"><i
-                                                    class="ti-pencil btn btn-sm btn-primary"></i></a>
-                                            <form method="POST"
-                                                action="{{ route('artists.destroy', encrypt($artist->id)) }}"
-                                                class="action-icon">
-                                                @csrf
-                                                <input name="_method" type="hidden" value="DELETE">
-                                                <button type="submit"
-                                                    class="btn btn-sm btn-danger  delete-icon show_confirm"
-                                                    data-toggle="tooltip" title='Delete'>
-                                                    <i class="ti-trash"></i>
+                                            {{-- <td><span id="status-btn{{ $artist->id }}">
+                                                <button class="btn btn-sm {{ $artist->status == 'Available' ? 'btn-success' : ($artist->status == 'Inactive' ? 'bg-danger' : 'bg-warning'); }}"  onclick="changeStatus('{{ $artist->id }}', {{ $artist->id}})" >
+                                                    {{ $artist->status }}
                                                 </button>
-                                            </form>
-                                        </td>
+                                            </span>
+                                            </td> --}}
+                                            <td>
+                                                <a href="{{ route('artists.show', encrypt($artist->id)) }}"><i
+                                                    class="ti-eye btn btn-sm btn-success"></i></a>
+                                                <a href="{{ route('artists.edit', encrypt($artist->id)) }}"><i
+                                                        class="ti-pencil btn btn-sm btn-primary"></i></a>
+                                                <form method="POST"
+                                                    action="{{ route('artists.destroy', encrypt($artist->id)) }}"
+                                                    class="action-icon">
+                                                    @csrf
+                                                    <input name="_method" type="hidden" value="DELETE">
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger  delete-icon show_confirm"
+                                                        data-toggle="tooltip" title='Delete'>
+                                                        <i class="ti-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
 
-                                    </tr>
-                                @endforeach
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="6" style="text-align: center;">
+                                            <b>No record is found at this moment!</b>
+                                        </td>
+                                    </tr>    
+                                @endif        
                             </tbody>
                         </table>
                     </div>

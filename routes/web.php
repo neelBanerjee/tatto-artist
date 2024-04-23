@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\Payment\PaymentController;
 use App\Http\Controllers\Admin\Expenses\ExpensesController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,14 +35,20 @@ Route::get('/admin/login', function () {
     return view('auth/login');
 })->name('adminLogin');
 
+Route::get('/sales/login', function () {
+    return view('auth/sales_login');
+})->name('salesLogin');
+
+
 Route::get('/user/logout', [AuthController::class, 'logoutArtist'])->name('artist.logout');
+Route::get('/sales/logout', [AuthController::class, 'logoutSales'])->name('sales.logout');
 Route::get('/admin/logout', [AuthController::class, 'logoutAdmin'])->name('admin.logout');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'adminCheck'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => Auth::guard('admins')->check() ? 'adminCheck': 'salesCheck'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('artists', ArtistController::class);
     Route::resource('artworks', ArtworkController::class);
@@ -53,7 +61,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminCheck'], function () {
 
     Route::resource('banners', BannerController::class);
 });
-
 
 
 Route::get('/get-quote', [DashboardController::class, 'getQuote'])->name('admin.getQuote');

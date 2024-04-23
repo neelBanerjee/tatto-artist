@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ArtworkRepository implements ArtworkInterface
 {
@@ -36,6 +37,16 @@ class ArtworkRepository implements ArtworkInterface
     ->orderBy('id', 'DESC')
     ->paginate(5);
 
+    }
+
+    public function getSalesPersonArtwork(){
+        $salespersonId = Auth::guard('sales')->id(); // Get the logged-in salesperson's ID
+
+        $artists = User::where('created_by', $salespersonId)->get(); // Get all artists created by this salesperson
+
+        $artworks = Artwork::whereIn('user_id', $artists->pluck('id'))->paginate(5); 
+
+        return $artworks;
     }
 
     public function storeArtworkData(array $data)
@@ -131,6 +142,6 @@ class ArtworkRepository implements ArtworkInterface
         return TotalView::where('artwork_id', $data)->get()->count();
     }
     public function getArtistWiseArtwork($id){
-        return Artwork::where('user_id', $id)->get();
+        return Artwork::where('user_id', $id)->paginate(5);
     }
 }

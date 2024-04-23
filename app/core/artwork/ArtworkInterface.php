@@ -3,6 +3,7 @@ namespace App\core\artwork;
 
 interface ArtworkInterface {
     public function getAllArtwork();
+    public function getSalesPersonArtwork();
     public function storeArtworkData(array $data);
     public function getSingleArtwork($id);
     public function updateArtwork($data,$id);

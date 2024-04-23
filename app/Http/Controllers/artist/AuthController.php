@@ -31,12 +31,22 @@ class AuthController extends Controller
 
                 if ($guard_type === 'admins') {
                     return redirect()->route('admin.dashboard'); // Redirect admin to dashboard
+                } 
+                else if ($guard_type === 'sales') {
+                    return redirect()->route('admin.dashboard'); // Redirect admin to dashboard
                 } else {
                     return redirect()->route('artists.dashboard'); // Redirect regular user to dashboard
                 }
 
             }else{
-                return back()->with("msg", "Invalid credentials")->withInput();
+                if ($guard_type === 'admins') {
+                    return redirect()->route('artistLogin')->with("msg", "Invalid credentials")->withInput();
+                } 
+                else if ($guard_type === 'sales') {
+                    return redirect()->route('salesLogin')->with("msg", "Invalid credentials")->withInput();
+                } else {
+                    return redirect()->route('adminLogin')->with("msg", "Invalid credentials")->withInput();
+                }
             }
 
         } catch (\Throwable $th) {
@@ -51,6 +61,14 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('artistLogin');
+    }
+
+    public function logoutSales(Request $request)
+    {
+        Auth::guard('sales')->logout(); // Logout admin user
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('salesLogin');
     }
 
     public function logoutAdmin(Request $request)

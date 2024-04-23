@@ -37,7 +37,7 @@
             <div class="nano-content">
                 <ul>
                     <div class="logo">
-                        <a href="#"> <span>{{ Auth::guard('admins')->check() ? "Admin Pannel" : "Artist Pannel" }}</span></a>
+                        <a href="#"> <span>{{ Auth::guard('admins')->check() ? "Admin Pannel" : ( Auth::guard('sales')->check() ? "Sales Pannel" : "Artist Panel") }}</span></a>
                     </div>
 
                     @if (Auth::guard('admins')->check())
@@ -158,7 +158,7 @@
                             <div class="header-icon dropdown">
 
                                 <span class="user-avatar" data-toggle="dropdown"
-                                    aria-expanded="false">{{ Auth::guard('admins')->check() ? Auth::guard('admins')->user()->name : Auth::guard('artists')->user()->name }}
+                                    aria-expanded="false">{{ Auth::guard('admins')->check() ? Auth::guard('admins')->user()->name : ( Auth::guard('sales')->check() ? Auth::guard('sales')->user()->name : Auth::guard('artists')->user()->name) }}
                                     <i class="ti-angle-down f-s-10"></i>
                                 </span>
                                 <div class="dropdown-menu dropdown-content-body">
@@ -166,7 +166,7 @@
                                         <ul>
 
                                             <li>
-                                                <a href="{{ Auth::guard('admins')->check() ? route('admin.logout') : route('artist.logout') }}">
+                                                <a href="{{ Auth::guard('admins')->check() ? route('admin.logout') : ( Auth::guard('sales')->check() ? route('sales.logout') : route('artist.logout') ) }}">
                                                     <i class="ti-power-off"></i>
                                                     <span>Logout</span>
                                                 </a>

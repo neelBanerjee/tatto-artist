@@ -2,6 +2,7 @@
 
 namespace App\core\artist;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\TimeTable;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
@@ -11,7 +12,13 @@ class ArtistRepository implements ArtistInterface
 {
     public function getAllArtist()
     {
-        return User::whereNotIn('id', [1])->where('type', 'artist')->orderBy('id', 'DESC')->get();
+       
+        if(Auth::guard('admins')->check()){
+            return User::whereNotIn('id', [1])->where('type', 'artist')->orderBy('id', 'DESC')->get();
+        }else{
+            return User::whereNotIn('id', [1])->where('type', 'artist')->where('created_by', Auth::guard('sales')->id())->orderBy('id', 'DESC')->get();
+        }
+        
     }
 
     public function storeArtistData(array $data, $timeData)
@@ -28,6 +35,12 @@ class ArtistRepository implements ArtistInterface
             $data['banner_image'] = $content_ban;
         }
         $data['password'] = Hash::make($data['password']);
+        
+        if(Auth::guard('admins')->check()){
+            $data['created_by'] = 0;
+        }else{
+            $data['created_by'] = Auth::guard('sales')->id();
+        }
 
         $user = User::create($data);
 
