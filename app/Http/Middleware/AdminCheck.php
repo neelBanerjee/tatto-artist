@@ -16,9 +16,14 @@ class AdminCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::guard('admins')->check()) {
-            return redirect()->route('adminLogin')->with("msg", "Please login first");
+        if(Auth::guard('admins')->check() || Auth::guard('sales')->check()) {
+            return $next($request);
+        }else{
+            if(Auth::guard('admins')->check()){
+                return redirect()->route('adminLogin')->with("msg", "Please login first");
+            }else{
+                return redirect()->route('salesLogin')->with("msg", "Please login first");
+            }
         }
-        return $next($request);
-    }
+    }    
 }

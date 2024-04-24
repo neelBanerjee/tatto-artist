@@ -48,7 +48,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => Auth::guard('admins')->check() ? 'adminCheck': 'salesCheck'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'adminCheck'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('artists', ArtistController::class);
     Route::resource('artworks', ArtworkController::class);

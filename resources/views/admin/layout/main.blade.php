@@ -62,16 +62,18 @@
                                 </li>
                             </ul>
                         </li>
+                        
+                        @if (Auth::guard('admins')->check())
+                            <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Sales Management <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
+                                <ul>
+                                    <li><a href="{{ route('sales.create') }}">Add Sales Person</a></li>
 
-                        <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Sales Management <span
-                            class="sidebar-collapse-icon ti-angle-down"></span></a>
-                            <ul>
-                                <li><a href="{{ route('sales.create') }}">Add Sales Person</a></li>
-
-                                <li><a href="{{ route('sales.index') }}">All Sales Person</a>
-                                </li>
-                            </ul>
-                        </li>
+                                    <li><a href="{{ route('sales.index') }}">All Sales Person</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif    
                     @endif
 
                     @if (Auth::guard('artists')->check())
