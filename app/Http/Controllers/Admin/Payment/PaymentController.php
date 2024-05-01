@@ -16,8 +16,15 @@ class PaymentController extends Controller
     public function getAcceptPayment(Request $request){
         if (Auth::guard('artists')->check()){
             $payments = PaymentModel::with('placementData','artist')->where('user_id',Auth::guard('artists')->user()->id)->get();
-        }else{
+        } 
+        elseif(Auth::guard('admins')->check()){
             $payments = PaymentModel::with('placementData', 'user', 'artist')->get();
+        }else{
+            $salespersonId = Auth::guard('sales')->id(); 
+            $artists = User::where('created_by', $salespersonId)->get();
+
+            $payments = PaymentModel::with('placementData', 'user', 'artist')->whereIn('artist_id', $artists->pluck('id'))->get(); 
+
         }
         //dd($payments);
         return view('admin.payment.index',compact('payments'));
@@ -26,8 +33,14 @@ class PaymentController extends Controller
     public function getDepositSlips(Request $request){
         if (Auth::guard('artists')->check()){
             $payments = PaymentModel::with('user','artist')->where('user_id',Auth::guard('artists')->user()->id)->get();
-        }else{
+        }
+        elseif (Auth::guard('admins')->check()){
             $payments = PaymentModel::with('user','artist')->get();
+        }else{
+            $salespersonId = Auth::guard('sales')->id(); 
+            $artists = User::where('created_by', $salespersonId)->get();
+            
+            $payments = PaymentModel::with('user','artist')->whereIn('artist_id', $artists->pluck('id'))->get();
         }
 
         //dd($payments);
@@ -70,7 +83,8 @@ class PaymentController extends Controller
             endif;    
             
             $payments = $query->get();
-        }else{
+        }
+        elseif (Auth::guard('admins')->check()){
             $query = PaymentModel::with('user');
 
             if(!empty($startDate)):
@@ -82,12 +96,37 @@ class PaymentController extends Controller
             endif;    
             
             $payments = $query->get();
+        }else{
+            $salespersonId = Auth::guard('sales')->id(); 
+            $artists = User::where('created_by', $salespersonId)->get();
+
+            $query = PaymentModel::with('user');
+
+            if(!empty($startDate)):
+                $query->where('date', '>=', $startDate);
+            endif;    
+
+            if(!empty($endDate)):
+                $query->where('date', '<=', $endDate);
+            endif;    
+            
+            $payments = $query->whereIn('artist_id', $artists->pluck('id'))->get();
         }
         return view('admin.payment.deposit',compact('payments'));
     }
 
     public function AddpaymentForm(Request $request){
-        $artists = User::where('type', '=', 'artist')->get();
+
+        if(Auth::guard('artists')->check()){
+            $artists = User::where('type', '=', 'artist')->get();
+        }
+        elseif(Auth::guard('admins')->check()){
+            $artists = User::where('type', '=', 'artist')->get();
+        }else{
+            $salespersonId = Auth::guard('sales')->id(); 
+            $artists = User::where('created_by', $salespersonId)->where('type', '=', 'artist')->get();
+        }
+
         $placements = Placement::all();
         return view('admin.payment.create',compact('placements','artists'));
     }
@@ -110,8 +149,11 @@ class PaymentController extends Controller
 
         if(Auth::guard('artists')->check()){
             $userid = Auth::guard('artists')->user()->id;
-        }else{
+        }
+        elseif(Auth::guard('admins')->check()){
             $userid = Auth::guard('admins')->user()->id;
+        }else{
+            $userid = Auth::guard('sales')->id();
         }
 
         if ($request->hasFile('bill_image')) {
@@ -146,7 +188,17 @@ class PaymentController extends Controller
     }
 
     public function editpaymentForm(Request $request,$id){
-        $artists = User::where('type', '=', 'artist')->get();
+     
+        if(Auth::guard('artists')->check()){
+            $artists = User::where('type', '=', 'artist')->get();
+        }
+        elseif(Auth::guard('admins')->check()){
+            $artists = User::where('type', '=', 'artist')->get();
+        }else{
+            $salespersonId = Auth::guard('sales')->id(); 
+            $artists = User::where('created_by', $salespersonId)->where('type', '=', 'artist')->get();
+        }
+
         $payments = PaymentModel::where('id',decrypt($id))->first();
         $placements = Placement::all();
 

@@ -39,8 +39,14 @@ class DashboardController extends Controller
     public function getQuote(){
         if(Auth::guard('artists')->check()){
             $data['quotes'] = Quote::where('artist_id',auth()->guard('artists')->id())->with('user', 'artist')->get();
-        }else{
+        }
+        elseif(Auth::guard('admins')->check()){
             $data['quotes'] = Quote::with('user', 'artist')->get();
+        }else{
+            $salespersonId = Auth::guard('sales')->id(); 
+            $artists = User::where('created_by', $salespersonId)->get();
+
+            $data['quotes'] = Quote::with('user', 'artist')->whereIn('artist_id', $artists->pluck('id'))->get(); 
         }
         
         //dd($data['quotes']);
@@ -51,8 +57,14 @@ class DashboardController extends Controller
     public function getAppointment(){
         if(Auth::guard('artists')->check()){
             $data['appointments'] = Appointment::where('artist_id',auth()->guard('artists')->id())->with('user', 'artist')->get();
-        }else{
+        } elseif(Auth::guard('admins')->check()){
             $data['appointments'] = Appointment::with('user', 'artist')->get();
+        }else{
+
+            $salespersonId = Auth::guard('sales')->id(); 
+            $artists = User::where('created_by', $salespersonId)->get();
+
+            $data['appointments'] = Appointment::with('user', 'artist')->whereIn('artist_id', $artists->pluck('id'))->get(); 
         }
         
         //dd($data['quotes']);

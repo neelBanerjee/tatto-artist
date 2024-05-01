@@ -2,6 +2,8 @@
 namespace App\core\banner;
 
 use App\Models\BannerImage;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class BannerRepository implements BannerInterface {
     public function getAllBanners(){
@@ -9,6 +11,16 @@ class BannerRepository implements BannerInterface {
             return BannerImage::where('user_id', auth()->guard('artists')->id())->with('artist')->orderBy('id', 'DESC')->get();
         }
         return BannerImage::with('artist')->orderBy('id', 'DESC')->get();
+    }
+
+    public function getArtistBanners(){
+        $salespersonId = Auth::guard('sales')->id(); // Get the logged-in salesperson's ID
+
+        $artists = User::where('created_by', $salespersonId)->get(); // Get all artists created by this salesperson
+
+        $artworks = BannerImage::whereIn('user_id', $artists->pluck('id'))->paginate(5); 
+
+        return $artworks;
     }
 
     public function storeBannerImage($data) {

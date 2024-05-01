@@ -6,6 +6,7 @@ use App\core\artist\ArtistInterface;
 use App\core\banner\BannerInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BannerController extends Controller
 {
@@ -19,7 +20,11 @@ class BannerController extends Controller
     }
 
     public function index() {
-        $data['banners'] = $this->bannerInterface->getAllBanners();
+        if(Auth::guard('admins')->check()){
+            $data['banners'] = $this->bannerInterface->getAllBanners();
+        }else{
+            $data['banners'] = $this->bannerInterface->getArtistBanners();
+        }    
         return view('admin.banner.index', $data);
 
     }
