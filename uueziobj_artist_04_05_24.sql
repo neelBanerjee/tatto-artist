@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2024 at 01:52 PM
+-- Generation Time: May 04, 2024 at 07:21 AM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.16
 
@@ -46,11 +46,35 @@ INSERT INTO `appointments` (`id`, `artist_id`, `message`, `availability`, `user_
 (7, 17, 'Api test description new', '2024-02-14', 16, '2024-02-12 22:09:59'),
 (8, 17, 'Api test description new', '2024-02-14', 16, '2024-02-13 18:43:30'),
 (9, 18, 'dfgdsfgdsfg', '2024-02-22', 14, '2024-02-22 12:19:28'),
-(10, 18, 'sdsdsd', '2024-02-23', 18, '2024-02-22 14:58:11'),
-(11, 18, 'hfyjtfjy', '2024-02-22', 14, '2024-02-22 17:31:56'),
+(10, 33, 'sdsdsd', '2024-02-23', 18, '2024-02-22 14:58:11'),
+(11, 34, 'hfyjtfjy', '2024-02-22', 14, '2024-02-22 17:31:56'),
 (12, 18, 'hfyjtfjy', '2024-02-22', 14, '2024-02-22 17:36:57'),
-(13, 18, 'messageqqqqqq', '2024-03-01', 18, '2024-02-26 19:44:32'),
-(14, 18, 'messageqqqqqq', '2024-02-09', 18, '2024-02-26 19:44:50');
+(13, 33, 'messageqqqqqq', '2024-03-01', 18, '2024-02-26 19:44:32'),
+(14, 34, 'messageqqqqqq', '2024-02-09', 18, '2024-02-26 19:44:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `artist_data`
+--
+
+CREATE TABLE `artist_data` (
+  `id` int NOT NULL,
+  `artist_id` int NOT NULL,
+  `hourly_rate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '100',
+  `specialty` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `years_in_trade` int DEFAULT '2',
+  `walk_in_welcome` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'yes',
+  `created_at` timestamp NOT NULL,
+  `updated_at` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `artist_data`
+--
+
+INSERT INTO `artist_data` (`id`, `artist_id`, `hourly_rate`, `specialty`, `years_in_trade`, `walk_in_welcome`, `created_at`, `updated_at`) VALUES
+(1, 35, '200', 'Armband', 4, 'yes', '2024-05-03 06:02:33', '2024-05-03 06:16:22');
 
 -- --------------------------------------------------------
 
@@ -111,7 +135,11 @@ CREATE TABLE `banner_images` (
 INSERT INTO `banner_images` (`id`, `banner_image`, `user_id`, `created_at`, `updated_at`) VALUES
 (7, '17058420251734.png', 14, '2024-01-21 07:30:25', '2024-01-21 07:30:25'),
 (9, '1708883305673.jpg', 20, '2024-02-25 12:18:25', '2024-02-25 12:18:25'),
-(10, '17089752242680.PNG', 18, '2024-02-26 13:50:24', '2024-02-26 13:50:24');
+(10, '17089752242680.PNG', 18, '2024-02-26 13:50:24', '2024-02-26 13:50:24'),
+(11, '17144701766286.png', 33, '2024-04-30 04:12:56', '2024-04-30 04:12:56'),
+(12, '17144701879509.jpg', 33, '2024-04-30 04:13:07', '2024-04-30 04:13:07'),
+(13, '17144702234988.png', 34, '2024-04-30 04:13:43', '2024-04-30 04:13:43'),
+(14, '17144702343324.jpg', 34, '2024-04-30 04:13:54', '2024-04-30 04:13:54');
 
 -- --------------------------------------------------------
 
@@ -304,7 +332,9 @@ INSERT INTO `payments` (`id`, `user_id`, `artist_id`, `customers_name`, `design`
 (5, 20, 15, 'JohnDoe', 'eagle', '2', 250.00, 100.00, 25.00, 100.00, 150.00, 'cash', '/storage/DepositSlip/IMG_20170119_110244.jpg', '2024-02-25'),
 (7, 18, 12, 'Neel Banerjee', 'Silk', '2', 14.95, 10.00, 2.00, 6.00, 4.00, 'atm_debit', '/storage/DepositSlip/paypal-btn.png', '2024-03-01'),
 (8, 18, 18, 'sdsd', 'Silk', '3', 14.95, 10.00, 2.00, 6.00, 4.00, 'atm_debit', '/storage/DepositSlip/architectural-03.jpg', '2024-03-15'),
-(9, 18, 14, 'Neel Banerjee', 'Silk', '3', 14.95, 10.00, 2.00, 6.00, 4.00, 'credit_card', '/storage/DepositSlip/ltwtemplates-com-localhost-ltwtemplates_v2_flex-shiphero_orders-phpMyAdmin-5-2-1.png', '2024-03-28');
+(9, 18, 14, 'Neel Banerjee', 'Silk', '3', 14.95, 10.00, 2.00, 6.00, 4.00, 'credit_card', '/storage/DepositSlip/ltwtemplates-com-localhost-ltwtemplates_v2_flex-shiphero_orders-phpMyAdmin-5-2-1.png', '2024-04-30'),
+(10, 30, 33, 'Neel Banerjee', 'Silk', '2', 14.95, 10.00, 2.00, 6.00, 4.00, 'credit_card', '/storage/DepositSlip/paypal-btn.png', '2024-04-30'),
+(11, 30, 34, 'Neel Banerjee', 'Silk', '3', 14.95, 10.00, 2.00, 6.00, 4.00, 'cash', '/storage/DepositSlip/0513 _ CC wallpapers 2023 WINTER DARK 1920x1080px.jpg', '2024-04-30');
 
 -- --------------------------------------------------------
 
@@ -496,6 +526,15 @@ CREATE TABLE `quotes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quotes`
+--
+
+INSERT INTO `quotes` (`id`, `artist_id`, `color`, `description`, `size`, `link_send_status`, `pdf_path`, `when_get_tattooed`, `reference_image`, `budget`, `availability`, `front_back_view`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 33, 'blue', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\n', 'L', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 34, 'Red', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\n', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 30, 'Red', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\n', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -835,7 +874,8 @@ INSERT INTO `time_tables` (`id`, `user_id`, `sunday_from`, `sunday_to`, `monday_
 (17, 19, '00:00', '00:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '00:00', '00:00', '2024-03-14 17:10:52', '2024-03-14 17:29:56'),
 (18, 27, '00:00', '00:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '00:00', '00:00', '2024-03-14 17:40:18', '2024-03-14 19:04:45'),
 (21, 33, '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '2024-04-23 05:22:08', '2024-04-23 05:22:08'),
-(22, 34, '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '2024-04-23 07:41:53', '2024-04-23 07:41:53');
+(22, 34, '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '2024-04-23 07:41:53', '2024-04-23 07:41:53'),
+(23, 35, '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '2024-05-03 06:02:33', '2024-05-03 06:02:33');
 
 -- --------------------------------------------------------
 
@@ -928,7 +968,8 @@ INSERT INTO `users` (`id`, `name`, `username`, `phone`, `address`, `address2`, `
 (27, 'test test', 'neel430', '1234567890', '10600 Westminster Boulevard, Westminster, CO, USA', '10370 Bel Air Dr', 'United States', 'Colorado', 'Westminster', '80020', '39.8906637', '-105.0654224', NULL, NULL, 'neel.bandyopadhyay@ss.co.in', NULL, '$2y$12$1RkBqcTtVvpUkyw5oxExUendirEufQhgC7b6jEhzsvT4Xs116Gjca', 1, NULL, 0, '2024-03-14 17:40:18', '2024-03-24 11:29:53', 'artist'),
 (30, 'test test', 'neelSales', '1234567890', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'neel.bandyopadhyays@codeclouds.co.in', NULL, '$2y$12$vp7SbO22OhMYpGM3xq8ROuArZGDh4iSqEHyJqFxj0fDmdvSqcU5aW', 1, NULL, 0, '2024-04-23 03:30:50', '2024-04-23 03:30:50', 'sales'),
 (33, 'Test Artist', 'test_artist_1', '9999999999', '240 East 38th Street, New York, NY, USA', NULL, NULL, NULL, NULL, '10016', NULL, NULL, NULL, NULL, 'testartist@domain.com', NULL, '$2y$12$vrbuqX9C2C4sFAdI31Z/COjOlJnnDkzBF5G4Ro4nu/8SLoJbemfpO', 1, NULL, 30, '2024-04-23 05:22:08', '2024-04-23 05:22:08', 'artist'),
-(34, 'Test Artist 2', 'test_artist_2', '9999999999', '360 Adams Street, Brooklyn, NY, USA', NULL, NULL, NULL, NULL, '11201', NULL, NULL, NULL, NULL, 'testartist2@domain.com', NULL, '$2y$12$x4Qclfxdvf3W9OMJRzd/dechlSXlb2l9qkRN5HQm0TEHIQH2TMdZC', 1, NULL, 30, '2024-04-23 07:41:53', '2024-04-23 07:41:53', 'artist');
+(34, 'Test Artist 2', 'test_artist_2', '9999999999', '360 Adams Street, Brooklyn, NY, USA', NULL, NULL, NULL, NULL, '11201', NULL, NULL, NULL, NULL, 'testartist2@domain.com', NULL, '$2y$12$x4Qclfxdvf3W9OMJRzd/dechlSXlb2l9qkRN5HQm0TEHIQH2TMdZC', 1, NULL, 30, '2024-04-23 07:41:53', '2024-04-23 07:41:53', 'artist'),
+(35, 'Demon Test', 'demon_test', '9999999999', '1760 3rd Avenue, New York, NY, USA', NULL, NULL, NULL, NULL, '10029', NULL, NULL, '17147359529748.png', '17147359524744.jpg', 'demon@domain.com', NULL, '$2y$12$zeYpOM47PU6Nn6gwgEQwqeTeU/6MIgpeFrgLxVS1YuIaNQ2/ge55W', 1, NULL, 0, '2024-05-03 06:02:33', '2024-05-03 06:02:33', 'artist');
 
 --
 -- Indexes for dumped tables
@@ -938,6 +979,12 @@ INSERT INTO `users` (`id`, `name`, `username`, `phone`, `address`, `address2`, `
 -- Indexes for table `appointments`
 --
 ALTER TABLE `appointments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `artist_data`
+--
+ALTER TABLE `artist_data`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1069,6 +1116,12 @@ ALTER TABLE `appointments`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT for table `artist_data`
+--
+ALTER TABLE `artist_data`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `artworks`
 --
 ALTER TABLE `artworks`
@@ -1078,7 +1131,7 @@ ALTER TABLE `artworks`
 -- AUTO_INCREMENT for table `banner_images`
 --
 ALTER TABLE `banner_images`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -1114,7 +1167,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1132,7 +1185,7 @@ ALTER TABLE `placements`
 -- AUTO_INCREMENT for table `quotes`
 --
 ALTER TABLE `quotes`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `styles`
@@ -1156,7 +1209,7 @@ ALTER TABLE `tatto_form`
 -- AUTO_INCREMENT for table `time_tables`
 --
 ALTER TABLE `time_tables`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `total_views`
@@ -1168,7 +1221,7 @@ ALTER TABLE `total_views`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

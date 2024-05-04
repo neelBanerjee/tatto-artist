@@ -53,6 +53,10 @@ class User extends Authenticatable
         return  $this->hasOne(TimeTable::class, 'user_id', 'id'); 
     }
 
+    public function artistData() {
+        return  $this->hasOne(ArtistData::class, 'user_id', 'id'); 
+    }
+
     public function bannerImages() {
         return  $this->hasMany(BannerImage::class, 'user_id', 'id'); 
     }

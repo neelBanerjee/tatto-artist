@@ -4,6 +4,7 @@ namespace App\core\artist;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\TimeTable;
+use App\Models\ArtistData;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -21,7 +22,7 @@ class ArtistRepository implements ArtistInterface
         
     }
 
-    public function storeArtistData(array $data, $timeData)
+    public function storeArtistData(array $data, $timeData,$artistData)
     {
         if (isset($data['profile_image']) && $data['profile_image'] != null) {
             $content_db = time() . rand(0000, 9999) . "." . $data['profile_image']->getClientOriginalExtension();
@@ -63,6 +64,16 @@ class ArtistRepository implements ArtistInterface
             "saterday_to" => "17:00",
         ];
 
+        //Create artist data record in artist_data table
+        $artistData = [
+            "artist_id" => $user->id,
+            "hourly_rate" => "150",
+            "specialty" => "Abstract",
+            "years_in_trade" => "2",
+        ];
+
+        ArtistData::create($artistData);
+
         return TimeTable::create($timeData);
     }
 
@@ -76,7 +87,7 @@ class ArtistRepository implements ArtistInterface
         }
     }
 
-    public function updateArtist($data, $id, $timeData, $close)
+    public function updateArtist($data, $id, $timeData, $artistData, $close)
     {
         //dd($data);
         $find =  User::where('id', $id)->first();
@@ -126,6 +137,21 @@ class ArtistRepository implements ArtistInterface
                     TimeTable::create($timeData);
 
                  }
+
+                 $check_if_artist_data =  ArtistData::where('artist_id', $id)->first();
+                 if($check_if_artist_data) {
+
+                    $artistData = [
+                        "hourly_rate" => "200",
+                        "specialty" => "Armband",
+                        "years_in_trade" => "4",
+                    ];
+
+                    //dd($artistData);
+                    
+                    $check_if_artist_data->update($artistData);
+                 }
+
             if (isset($data['profile_image']) && $data['profile_image'] != null) {
                 File::delete(public_path("storage/ProfileImage/" . $find->profile_image));
                 $content_db = time() . rand(0000, 9999) . "." . $data['profile_image']->getClientOriginalExtension();

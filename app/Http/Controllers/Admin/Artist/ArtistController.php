@@ -57,7 +57,8 @@ class ArtistController extends Controller
         ]);
         $data = $request->only('name', 'username', 'email', 'phone', 'address', 'password', 'zipcode', 'profile_image', 'banner_image');
         $timeData = $request->only('sunday_from','sunday_to','monday_from','monday_to','tuesday_from','tuesday_to','wednesday_from','wednesday_to','thrusday_from','thrusday_to','friday_from','friday_to','saterday_from','saterday_to');
-        $store = $this->artistInterface->storeArtistData($data, $timeData);
+        $artistData = $request->only('hourly_rate','specialty',"years_in_trade");
+        $store = $this->artistInterface->storeArtistData($data, $timeData,$artistData);
         if ($store) {
             return redirect()->route('artists.index')->with('msg', 'New artist added successfully.');
         } else {
@@ -104,9 +105,12 @@ class ArtistController extends Controller
 
         $data = $request->only('name', 'username', 'email', 'phone', 'address', 'address2', 'country', 'state', 'city', 'password', 'zipcode', 'latitude','longitude', 'profile_image', 'banner_image');
         $timeData = $request->only('sunday_from','sunday_to','monday_from','monday_to','tuesday_from','tuesday_to','wednesday_from','wednesday_to','thrusday_from','thrusday_to','friday_from','friday_to','saterday_from','saterday_to');
+       
+        $artistData = $request->only('hourly_rate','specialty',"years_in_trade");
+
         $close = $request->only( 'sunday_close','monday_close', 'tuesday_close', 'wednesday_close', 'thrusday_close','friday_close', 'saterday_close');
 
-        $update = $this->artistInterface->updateArtist($data, decrypt($id), $timeData, $close);
+        $update = $this->artistInterface->updateArtist($data, decrypt($id), $timeData, $artistData, $close);
        
         if ($update) {
             return back()->with('msg', 'Artist information updated successfully.');
