@@ -209,6 +209,287 @@
 
                             <div class="row">
 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Certified Professionals</label><span class="text-danger">*</span>
+                                        <select name="certified_professionals" class="form-control" value="{{ old('certified_professionals') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('certified_professionals')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Consultations Available</label>
+                                        <select name="consultation_available" class="form-control" value="{{ old('consultation_available') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('consultation_available')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Language Spoken</label><span class="text-danger">*</span>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="language_spoken[]" value="English" id="English" checked>
+                                            <label class="form-check-label" for="English">
+                                                English
+                                            </label>
+                                          </div>
+                                         
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="language_spoken[]" value="Spanish" id="Spanish">
+                                            <label class="form-check-label" for="Spanish">
+                                              Spanish
+                                            </label>
+                                          </div>
+
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="language_spoken[]" value="French" id="French">
+                                            <label class="form-check-label" for="French">
+                                              French
+                                            </label>
+                                          </div>
+
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="language_spoken[]" value="Italian" id="Italian">
+                                            <label class="form-check-label" for="Italian">
+                                              Italian
+                                            </label>
+                                          </div>
+
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="language_spoken[]" value="Chinese" id="Chinese">
+                                            <label class="form-check-label" for="Chinese">
+                                              Chinese
+                                            </label>
+                                          </div>
+
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="language_spoken[]" value="Farsi" id="Farsi">
+                                            <label class="form-check-label" for="Farsi">
+                                              Farsi
+                                            </label>
+                                          </div>
+
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="language_spoken[]" value="Other" id="Other">
+                                            <label class="form-check-label" for="Other">
+                                              Other
+                                            </label>
+                                          </div>
+                                        @error('language_spoken')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Parking Available</label>
+                                        <select name="parking" class="form-control" value="{{ old('parking') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('parking')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Payment Option</label><span class="text-danger">*</span>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="payment_method[]" value="Cash" id="Cash" checked>
+                                            <label class="form-check-label" for="Cash">
+                                                Cash
+                                            </label>
+                                          </div>
+                                         
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="payment_method[]" value="Check" id="Check">
+                                            <label class="form-check-label" for="Check">
+                                              Check
+                                            </label>
+                                          </div>
+
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="payment_method[]" value="CC" id="CC">
+                                            <label class="form-check-label" for="CC">
+                                              CC
+                                            </label>
+                                          </div>
+
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="payment_method[]" value="Venomo" id="Venomo">
+                                            <label class="form-check-label" for="Venomo">
+                                              Venomo
+                                            </label>
+                                          </div>
+
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="payment_method[]" value="Zelle" id="Zelle">
+                                            <label class="form-check-label" for="Zelle">
+                                              Zelle
+                                            </label>
+                                          </div>
+
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="payment_method[]" value="CashApp" id="CashApp">
+                                            <label class="form-check-label" for="CashApp">
+                                              CashApp
+                                            </label>
+                                          </div>
+
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="payment_method[]" value="Paypal" id="Paypal">
+                                            <label class="form-check-label" for="Paypal">
+                                              Paypal
+                                            </label>
+                                          </div>
+
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="payment_method[]" value="ApplePay" id="ApplePay">
+                                            <label class="form-check-label" for="ApplePay">
+                                              ApplePay
+                                            </label>
+                                          </div>
+
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="payment_method[]" value="GooglePay" id="GooglePay">
+                                            <label class="form-check-label" for="GooglePay">
+                                              GooglePay
+                                            </label>
+                                          </div>
+
+                                        @error('payment_method')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Air Conditioned</label>
+                                        <select name="air_conditioned" class="form-control" value="{{ old('air_conditioned') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('air_conditioned')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Water Available</label><span class="text-danger">*</span>
+                                        <select name="water_available" class="form-control" value="{{ old('certified_professionals') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('water_available')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Consultations Available</label>
+                                        <select name="coffee_available" class="form-control" value="{{ old('coffee_available') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('coffee_available')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Masks Worn</label><span class="text-danger">*</span>
+                                        <select name="mask_worn" class="form-control" value="{{ old('mask_worn') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('mask_worn')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Vaccinated Staff</label>
+                                        <select name="vaccinated_staff" class="form-control" value="{{ old('vaccinated_staff') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('vaccinated_staff')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Password</label><span class="text-danger">*</span>

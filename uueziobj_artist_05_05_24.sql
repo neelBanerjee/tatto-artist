@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2024 at 07:21 AM
+-- Generation Time: May 05, 2024 at 06:31 PM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.16
 
@@ -64,17 +64,20 @@ CREATE TABLE `artist_data` (
   `hourly_rate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '100',
   `specialty` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `years_in_trade` int DEFAULT '2',
-  `walk_in_welcome` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'yes',
+  `walk_in_welcome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
+  `certified_professionals` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
+  `consultation_available` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
+  `language_spoken` varchar(255) NOT NULL DEFAULT 'English',
+  `parking` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
+  `payment_method` varchar(255) NOT NULL DEFAULT 'Cash',
+  `air_conditioned` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
+  `water_available` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
+  `coffee_available` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'no',
+  `mask_worn` varchar(100) NOT NULL DEFAULT 'yes',
+  `vaccinated_staff` varchar(100) NOT NULL DEFAULT 'yes',
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `artist_data`
---
-
-INSERT INTO `artist_data` (`id`, `artist_id`, `hourly_rate`, `specialty`, `years_in_trade`, `walk_in_welcome`, `created_at`, `updated_at`) VALUES
-(1, 35, '200', 'Armband', 4, 'yes', '2024-05-03 06:02:33', '2024-05-03 06:16:22');
 
 -- --------------------------------------------------------
 
@@ -968,8 +971,7 @@ INSERT INTO `users` (`id`, `name`, `username`, `phone`, `address`, `address2`, `
 (27, 'test test', 'neel430', '1234567890', '10600 Westminster Boulevard, Westminster, CO, USA', '10370 Bel Air Dr', 'United States', 'Colorado', 'Westminster', '80020', '39.8906637', '-105.0654224', NULL, NULL, 'neel.bandyopadhyay@ss.co.in', NULL, '$2y$12$1RkBqcTtVvpUkyw5oxExUendirEufQhgC7b6jEhzsvT4Xs116Gjca', 1, NULL, 0, '2024-03-14 17:40:18', '2024-03-24 11:29:53', 'artist'),
 (30, 'test test', 'neelSales', '1234567890', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'neel.bandyopadhyays@codeclouds.co.in', NULL, '$2y$12$vp7SbO22OhMYpGM3xq8ROuArZGDh4iSqEHyJqFxj0fDmdvSqcU5aW', 1, NULL, 0, '2024-04-23 03:30:50', '2024-04-23 03:30:50', 'sales'),
 (33, 'Test Artist', 'test_artist_1', '9999999999', '240 East 38th Street, New York, NY, USA', NULL, NULL, NULL, NULL, '10016', NULL, NULL, NULL, NULL, 'testartist@domain.com', NULL, '$2y$12$vrbuqX9C2C4sFAdI31Z/COjOlJnnDkzBF5G4Ro4nu/8SLoJbemfpO', 1, NULL, 30, '2024-04-23 05:22:08', '2024-04-23 05:22:08', 'artist'),
-(34, 'Test Artist 2', 'test_artist_2', '9999999999', '360 Adams Street, Brooklyn, NY, USA', NULL, NULL, NULL, NULL, '11201', NULL, NULL, NULL, NULL, 'testartist2@domain.com', NULL, '$2y$12$x4Qclfxdvf3W9OMJRzd/dechlSXlb2l9qkRN5HQm0TEHIQH2TMdZC', 1, NULL, 30, '2024-04-23 07:41:53', '2024-04-23 07:41:53', 'artist'),
-(35, 'Demon Test', 'demon_test', '9999999999', '1760 3rd Avenue, New York, NY, USA', NULL, NULL, NULL, NULL, '10029', NULL, NULL, '17147359529748.png', '17147359524744.jpg', 'demon@domain.com', NULL, '$2y$12$zeYpOM47PU6Nn6gwgEQwqeTeU/6MIgpeFrgLxVS1YuIaNQ2/ge55W', 1, NULL, 0, '2024-05-03 06:02:33', '2024-05-03 06:02:33', 'artist');
+(34, 'Test Artist 2', 'test_artist_2', '9999999999', '360 Adams Street, Brooklyn, NY, USA', NULL, NULL, NULL, NULL, '11201', NULL, NULL, NULL, NULL, 'testartist2@domain.com', NULL, '$2y$12$x4Qclfxdvf3W9OMJRzd/dechlSXlb2l9qkRN5HQm0TEHIQH2TMdZC', 1, NULL, 30, '2024-04-23 07:41:53', '2024-04-23 07:41:53', 'artist');
 
 --
 -- Indexes for dumped tables

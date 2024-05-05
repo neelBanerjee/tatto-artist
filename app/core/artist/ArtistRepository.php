@@ -78,6 +78,14 @@ class ArtistRepository implements ArtistInterface
             "specialty" => $artistData["specialty"],
             "years_in_trade" => $artistData["years_in_trade"],
             "walk_in_welcome" => $artistData["walk_in_welcome"],
+            "certified_professionals" => $artistData["certified_professionals"],
+            "consultation_available" => $artistData["consultation_available"],
+            "language_spoken" => $artistData["language_spoken"],
+            "parking" => $artistData["parking"],
+            "water_available" => $artistData["water_available"],
+            "coffee_available" => $artistData["coffee_available"],
+            "mask_worn" => $artistData["mask_worn"],
+            "vaccinated_staff" => $artistData["vaccinated_staff"],
         ];
 
         ArtistData::create($artistData);

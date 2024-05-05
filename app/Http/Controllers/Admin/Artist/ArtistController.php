@@ -60,7 +60,9 @@ class ArtistController extends Controller
         $data = $request->only('name', 'username', 'email', 'phone', 'address', 'password', 'zipcode', 'profile_image', 'banner_image');
         $timeData = $request->only('sunday_from','sunday_to','monday_from','monday_to','tuesday_from','tuesday_to','wednesday_from','wednesday_to','thrusday_from','thrusday_to','friday_from','friday_to','saterday_from','saterday_to');
         
-        $artistData = $request->only('hourly_rate','specialty',"years_in_trade","walk_in_welcome");
+        $artistData = $request->only('hourly_rate','specialty',"years_in_trade","walk_in_welcome","certified_professionals","consultation_available",
+            "language_spoken","parking","water_available","coffee_available","mask_worn","vaccinated_staff"
+        );
        
         $store = $this->artistInterface->storeArtistData($data, $timeData,$artistData);
         if ($store) {
