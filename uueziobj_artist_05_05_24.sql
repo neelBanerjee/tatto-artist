@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2024 at 06:31 PM
+-- Generation Time: May 05, 2024 at 06:47 PM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.16
 
@@ -127,6 +127,9 @@ CREATE TABLE `banner_images` (
   `id` bigint UNSIGNED NOT NULL,
   `banner_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci,
+  `from_date` date DEFAULT NULL,
+  `to_date` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -135,14 +138,16 @@ CREATE TABLE `banner_images` (
 -- Dumping data for table `banner_images`
 --
 
-INSERT INTO `banner_images` (`id`, `banner_image`, `user_id`, `created_at`, `updated_at`) VALUES
-(7, '17058420251734.png', 14, '2024-01-21 07:30:25', '2024-01-21 07:30:25'),
-(9, '1708883305673.jpg', 20, '2024-02-25 12:18:25', '2024-02-25 12:18:25'),
-(10, '17089752242680.PNG', 18, '2024-02-26 13:50:24', '2024-02-26 13:50:24'),
-(11, '17144701766286.png', 33, '2024-04-30 04:12:56', '2024-04-30 04:12:56'),
-(12, '17144701879509.jpg', 33, '2024-04-30 04:13:07', '2024-04-30 04:13:07'),
-(13, '17144702234988.png', 34, '2024-04-30 04:13:43', '2024-04-30 04:13:43'),
-(14, '17144702343324.jpg', 34, '2024-04-30 04:13:54', '2024-04-30 04:13:54');
+INSERT INTO `banner_images` (`id`, `banner_image`, `user_id`, `description`, `from_date`, `to_date`, `created_at`, `updated_at`) VALUES
+(7, '17058420251734.png', 14, NULL, NULL, NULL, '2024-01-21 07:30:25', '2024-01-21 07:30:25'),
+(9, '1708883305673.jpg', 20, NULL, NULL, NULL, '2024-02-25 12:18:25', '2024-02-25 12:18:25'),
+(10, '17089752242680.PNG', 18, NULL, NULL, NULL, '2024-02-26 13:50:24', '2024-02-26 13:50:24'),
+(11, '17144701766286.png', 33, NULL, NULL, NULL, '2024-04-30 04:12:56', '2024-04-30 04:12:56'),
+(12, '17144701879509.jpg', 33, NULL, NULL, NULL, '2024-04-30 04:13:07', '2024-04-30 04:13:07'),
+(13, '17144702234988.png', 34, NULL, NULL, NULL, '2024-04-30 04:13:43', '2024-04-30 04:13:43'),
+(14, '17144702343324.jpg', 34, NULL, NULL, NULL, '2024-04-30 04:13:54', '2024-04-30 04:13:54'),
+(15, '17149286931109.jpeg', 34, 'rtrt', '2024-05-05', '2024-05-31', '2024-05-05 11:34:53', '2024-05-05 11:34:53'),
+(16, '17149348091979.jpg', 34, 'test description....', '2024-05-06', '2024-05-13', '2024-05-05 13:16:49', '2024-05-05 13:16:49');
 
 -- --------------------------------------------------------
 
@@ -1133,7 +1138,7 @@ ALTER TABLE `artworks`
 -- AUTO_INCREMENT for table `banner_images`
 --
 ALTER TABLE `banner_images`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `comments`
