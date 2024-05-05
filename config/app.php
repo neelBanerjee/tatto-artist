@@ -176,7 +176,7 @@ return [
         App\ServiceProvider\SubjectServiceProvider::class,
         App\ServiceProvider\StyleServiceProvider::class,
         App\ServiceProvider\BannerImageServiceProvider::class,
-        Barryvdh\DomPDF\ServiceProvider::class,//Add this code
+        Barryvdh\DomPDF\ServiceProvider::class,
     ])->toArray(),
 
     /*

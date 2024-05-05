@@ -43,7 +43,6 @@
                             @enderror
                         </div>
 
-
                         <div class="form-group">
                             <label>Attach the banner image here</label><span class="text-danger">*</span>
                             <input type="file" class="form-control" name="banner_image"
@@ -54,6 +53,25 @@
                                 </span>
                             @enderror
                         </div>
+                        
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea name="description" class="form-control" style="width:100%; height:100px;"></textarea>
+                        </div> 
+
+                        <div class="form-group">
+                            <label>From Date</label>
+                            <input type="date" class="form-control" name="from_date" value="">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>To Date</label>
+                            <input type="date" class="form-control" name="to_date" value="">
+                        </div>                        
+
+
+
+
 
 
 

@@ -43,11 +43,15 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
+       // echo "<pre>"; print_r($_POST); die;
         $request->validate([
             'user_id' => 'required|numeric|exists:users,id',
-            'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif'
+            'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'description' => 'nullable',
+            'from_date' => 'date',
+            'to_date' => 'date'
         ]);
-        $data = $request->only('user_id', 'banner_image');
+        $data = $request->only('user_id', 'banner_image', 'description', 'from_date', 'to_date');
         $store = $this->bannerInterface->storeBannerImage($data);
         if ($store) {
             return redirect()->route('banners.index')->with('msg', 'New banner image uploded successfully.');
