@@ -24,6 +24,8 @@ class ArtistRepository implements ArtistInterface
 
     public function storeArtistData(array $data, $timeData,$artistData)
     {
+        dd($timeData);
+
         if (isset($data['profile_image']) && $data['profile_image'] != null) {
             $content_db = time() . rand(0000, 9999) . "." . $data['profile_image']->getClientOriginalExtension();
             $data['profile_image']->storeAs("public/ProfileImage", $content_db);
@@ -46,30 +48,36 @@ class ArtistRepository implements ArtistInterface
         $user = User::create($data);
 
         //Create default timeslots data in time slot table
-        $timeData = [
-            "user_id" => $user->id,
-            "sunday_from" => "09:00",
-            "sunday_to" => "17:00",
-            "monday_from" => "09:00",
-            "monday_to" => "17:00",
-            "tuesday_from" => "09:00",
-            "tuesday_to" => "17:00",
-            "wednesday_from" => "09:00",
-            "wednesday_to" => "17:00",
-            "thrusday_from" => "09:00",
-            "thrusday_to" => "17:00",
-            "friday_from" => "09:00",
-            "friday_to" => "17:00",
-            "saterday_from" => "09:00",
-            "saterday_to" => "17:00",
-        ];
+        $timeData['user_id'] = $user->id;
 
+        $timeData['sunday_from'] = isset($timeData['sunday_from']) ? $timeData['sunday_from'] : "09:00";
+        $timeData['sunday_to'] = isset($timeData['sunday_to']) ? $timeData['sunday_to'] : "17:00";
+
+        $timeData['monday_from'] = isset($timeData['monday_from']) ? $timeData['monday_from'] : "09:00";
+        $timeData['monday_to'] = isset($timeData['monday_to']) ? $timeData['monday_to'] : "17:00";
+
+        $timeData['tuesday_from'] = isset($timeData['tuesday_from']) ? $timeData['tuesday_from'] : "09:00";
+        $timeData['tuesday_to'] = isset($timeData['tuesday_to']) ? $timeData['tuesday_to'] : "17:00";
+        
+        $timeData['wednesday_from'] = isset($timeData['wednesday_from']) ? $timeData['wednesday_from'] : "09:00";
+        $timeData['wednesday_to'] = isset($timeData['wednesday_to']) ? $timeData['wednesday_to'] : "17:00";
+
+        $timeData['thrusday_from'] = isset($timeData['thrusday_from']) ? $timeData['thrusday_from'] : "09:00";
+        $timeData['thrusday_to'] = isset($timeData['thrusday_to']) ? $timeData['thrusday_to'] : "17:00";
+
+        $timeData['friday_from'] = isset($timeData['friday_from']) ? $timeData['friday_from'] : "09:00";
+        $timeData['friday_to'] = isset($timeData['friday_to']) ? $timeData['friday_to'] : "17:00";
+
+        $timeData['saterday_from'] = isset($timeData['saterday_from']) ? $timeData['saterday_from'] : "09:00";
+        $timeData['saterday_to'] = isset($timeData['saterday_to']) ? $timeData['saterday_to'] : "17:00";
+        
         //Create artist data record in artist_data table
         $artistData = [
             "artist_id" => $user->id,
-            "hourly_rate" => "150",
-            "specialty" => "Abstract",
-            "years_in_trade" => "2",
+            "hourly_rate" => $artistData["hourly_rate"],
+            "specialty" => $artistData["specialty"],
+            "years_in_trade" => $artistData["years_in_trade"],
+            "walk_in_welcome" => $artistData["walk_in_welcome"],
         ];
 
         ArtistData::create($artistData);

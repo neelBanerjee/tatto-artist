@@ -140,7 +140,72 @@
                                     </div>
                                 </div>
     
-                            </div>    
+                            </div>  
+                            
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Hourly Rate</label><span class="text-danger">*</span>
+                                        <input type="number" class="form-control" id="hourly_rate" placeholder="Hourly Rate" name="hourly_rate">
+                                        @error('hourly_rate')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Speciality</label><span class="text-danger">*</span>
+                                        <select name="specialty" class="form-control" value="{{ old('specialty') }}">
+                                            <option value="">select style</option>
+                                            @foreach ($styles as $style)
+                                                <option value="{{ $style->id }}">{{ $style->title }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('specialty')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Years In Trade</label><span class="text-danger">*</span>
+                                        <input type="number" class="form-control" id="years_in_trade" placeholder="Years In Trade" name="years_in_trade">
+                                        @error('years_in_trade')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Walk in Welcome</label>
+                                        <select name="walk_in_welcome" class="form-control" value="{{ old('walk_in_welcome') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('walk_in_welcome')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
 
                             <div class="row">
 

@@ -6,6 +6,7 @@ use App\core\artist\ArtistInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Style;
 
 class ArtistController extends Controller
 {
@@ -38,7 +39,8 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        return view('admin.artist.create');
+        $data['styles'] = Style::orderBy('id', 'asc')->get();
+        return view('admin.artist.create',$data);
     }
 
     /**
@@ -57,7 +59,9 @@ class ArtistController extends Controller
         ]);
         $data = $request->only('name', 'username', 'email', 'phone', 'address', 'password', 'zipcode', 'profile_image', 'banner_image');
         $timeData = $request->only('sunday_from','sunday_to','monday_from','monday_to','tuesday_from','tuesday_to','wednesday_from','wednesday_to','thrusday_from','thrusday_to','friday_from','friday_to','saterday_from','saterday_to');
-        $artistData = $request->only('hourly_rate','specialty',"years_in_trade");
+        
+        $artistData = $request->only('hourly_rate','specialty',"years_in_trade","walk_in_welcome");
+       
         $store = $this->artistInterface->storeArtistData($data, $timeData,$artistData);
         if ($store) {
             return redirect()->route('artists.index')->with('msg', 'New artist added successfully.');
