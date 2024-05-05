@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BannerImage extends Model
 {
     use HasFactory;
-    protected $fillable = ['banner_image', 'user_id'];
+    protected $fillable = ['banner_image', 'user_id', 'description', 'from_date','to_date'];
 
     public function artist()
     {

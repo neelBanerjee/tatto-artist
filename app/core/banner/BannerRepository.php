@@ -4,6 +4,7 @@ namespace App\core\banner;
 use App\Models\BannerImage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Image;
 
 class BannerRepository implements BannerInterface {
     public function getAllBanners(){
@@ -24,6 +25,7 @@ class BannerRepository implements BannerInterface {
     }
 
     public function storeBannerImage($data) {
+      //  echo "<pre>"; print_r($data); die;
         if (isset($data['banner_image']) && $data['banner_image'] != null) {
             $content_db = time().rand(0000, 9999) . "." . $data['banner_image']->getClientOriginalExtension();
             $data['banner_image']->storeAs("public/BannerImage", $content_db);
