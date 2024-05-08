@@ -61,7 +61,9 @@ class ArtistController extends Controller
         $timeData = $request->only('sunday_from','sunday_to','monday_from','monday_to','tuesday_from','tuesday_to','wednesday_from','wednesday_to','thrusday_from','thrusday_to','friday_from','friday_to','saterday_from','saterday_to');
         
         $artistData = $request->only('hourly_rate','specialty',"years_in_trade","walk_in_welcome","certified_professionals","consultation_available",
-            "language_spoken","parking","water_available","coffee_available","mask_worn","vaccinated_staff"
+            "language_spoken","parking","payment_method","air_conditioned","water_available","coffee_available","mask_worn","vaccinated_staff","wheel_chair_accessible","bike_parking",
+            "wifi_available","artist_of_the_year","insta_handle","facebook_handle","youtube_handle","twitter_handle","google_map_api","yelp_api",
+            "shop_logo","shop_percentage","shop_email","shop_name","shop_address"
         );
        
         $store = $this->artistInterface->storeArtistData($data, $timeData,$artistData);
@@ -90,6 +92,10 @@ class ArtistController extends Controller
     public function edit(string $id)
     {
         $data['artist'] = $this->artistInterface->getSingleArtist(decrypt($id));
+        $data['artistData'] = $data['artist']->artistData;
+        $data['languageSpoken'] = explode(',', $data['artistData']->language_spoken);
+        $data['PaymentMethod'] = explode(',', $data['artistData']->payment_method);
+        $data['styles'] = Style::orderBy('id', 'asc')->get();
         // dd($data);
         if ($data['artist'] == 'Not Found') {
             return back()->with('msg', 'No artist found!');
@@ -112,7 +118,11 @@ class ArtistController extends Controller
         $data = $request->only('name', 'username', 'email', 'phone', 'address', 'address2', 'country', 'state', 'city', 'password', 'zipcode', 'latitude','longitude', 'profile_image', 'banner_image');
         $timeData = $request->only('sunday_from','sunday_to','monday_from','monday_to','tuesday_from','tuesday_to','wednesday_from','wednesday_to','thrusday_from','thrusday_to','friday_from','friday_to','saterday_from','saterday_to');
        
-        $artistData = $request->only('hourly_rate','specialty',"years_in_trade");
+        $artistData = $request->only('hourly_rate','specialty',"years_in_trade","walk_in_welcome","certified_professionals","consultation_available",
+            "language_spoken","parking","payment_method","air_conditioned","water_available","coffee_available","mask_worn","vaccinated_staff","wheel_chair_accessible","bike_parking",
+            "wifi_available","artist_of_the_year","insta_handle","facebook_handle","youtube_handle","twitter_handle","google_map_api","yelp_api",
+            "shop_logo","shop_percentage","shop_email","shop_name","shop_address"
+        );
 
         $close = $request->only( 'sunday_close','monday_close', 'tuesday_close', 'wednesday_close', 'thrusday_close','friday_close', 'saterday_close');
 

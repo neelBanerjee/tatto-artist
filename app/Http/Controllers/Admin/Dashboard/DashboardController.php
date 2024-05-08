@@ -36,6 +36,38 @@ class DashboardController extends Controller
         return view('admin.dashboard.dashboard',compact('totalUsers','totalArtists','totalArtworks'));
     }
 
+    public function impersonate($salesExeID){
+        // Save the current admin's ID in the session for later revert
+        session(['admin_id' => Auth::guard('admins')->id()]);
+
+        if (Auth::guard('admins')->check()) {
+            Auth::guard('admins')->logout();
+        }
+
+        // Perform impersonation
+        Auth::guard('sales')->loginUsingId($salesExeID);
+
+        // Redirect to the manager's dashboard
+        return redirect()->route('admin.dashboard');
+    }
+
+    public function revertImpersonate()
+    {
+        // Check if the session has the original admin's ID
+        if (session('admin_id')) {
+            //Destroying sales guard before login with admin
+            if (Auth::guard('sales')->check()) {
+                Auth::guard('sales')->logout();
+            }
+            // Re-login as the admin
+            Auth::guard('admins')->loginUsingId(session('admin_id'));
+            session()->forget('admin_id'); // Remove the admin_id from session
+        }
+
+        // Redirect back to the admin panel
+        return redirect()->route('sales.index');
+    }
+
     public function getQuote(){
         if(Auth::guard('artists')->check()){
             $data['quotes'] = Quote::where('artist_id',auth()->guard('artists')->id())->with('user', 'artist')->get();

@@ -18,8 +18,30 @@
                             @csrf
 
                             <div class="row">
-                                <div class="col-md-6">
-                                    
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Artist Name</label>
+                                        @if (Auth::guard('artists')->check())
+                                            <input type="text" class="form-control" placeholder="Artist Name" name="artist_name" value="{{ $payments->artist->name }}" readonly>
+                                            <input type="hidden" name="user_id" value="{{ Auth::guard('artists')->user()->id; }}">
+                                        @else
+                                            <select name="user_id" class="form-control" value="{{ old('user_id') }}">
+                                                <option value="">select artist</option>
+                                                @foreach ($artists as $artist)
+                                                    <option {{ $expenses->user_id == $artist->id ? 'selected' : '' }}
+                                                        value="{{ $artist->id }}">{{ $artist->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        @endif
+
+                                        @error('artist_id')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="id_end_time">Trabsaction Date:</label>
                                         <div class="input-group date" id="datepicker">
@@ -30,8 +52,10 @@
                                                 </div>
                                             </div>
                                         </div>   
-                                    </div>    
-                                    
+                                    </div>  
+                                </div>  
+
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Payment Method</label><span class="text-danger">*</span>
                                         <select name="payment_method" class="form-control" required>
@@ -49,27 +73,11 @@
                                             </span>
                                         @enderror
                                     </div>
-
-                                    <div class="form-group">
-                                        <label>Amount</label><span class="text-danger">*</span>
-                                        <input type="text" class="form-control" name="amount" value="{{$expenses->amount}}" placeholder="Enter amount" required>
-                                        @error('amount')
-                                            <span class="text-danger" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Note</label><span class="text-danger">*</span>
-                                        <textarea name="note" class="form-control" required> <?php echo $expenses->note ?></textarea>
-                                        @error('note')
-                                            <span class="text-danger" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-
+                                </div>
+                            </div>            
+                            
+                            <div class="row">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Expense Items</label><span class="text-danger">*</span>
                                         <select name="expense_items" class="form-control" required>
@@ -86,13 +94,35 @@
                                             </span>
                                         @enderror
                                     </div>
+                                </div>    
 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Amount</label><span class="text-danger">*</span>
+                                        <input type="text" class="form-control" name="amount" value="{{$expenses->amount}}" placeholder="Enter amount" required>
+                                        @error('amount')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
+                            </div>        
 
-
-                            </div>
-
-
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Note</label><span class="text-danger">*</span>
+                                        <textarea name="note" class="form-control" style="height: 50px;" required> <?php echo $expenses->note ?></textarea>
+                                        @error('note')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+                            </div>    
+                         </div>
 
                         <button type="submit" class="btn btn-default">Submit</button>
                         </form>

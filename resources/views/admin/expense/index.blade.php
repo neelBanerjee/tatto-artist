@@ -20,6 +20,8 @@
                         <table class="table student-data-table m-t-20">
                             <thead>
                                 <tr>
+                                    <th>SL No</th>
+                                    <th>Artist</th>
                                     <th>Date</th>
                                     <th>Payment Method</th>
                                     <th>Amount</th>
@@ -30,14 +32,17 @@
                             </thead>
                             <tbody>
                                 @if(count($expense)>0)
-                                    @foreach ($expense as $expenses)
+                                    @foreach ($expense as $index => $expenses)
                                         <tr>
-
+                                            <td>{{$index+1}}</td>
+                                            <td>
+                                                {{ $expenses->user->name }}
+                                            </td>
                                             <td>
                                                 {{ date('jS F, Y', strtotime($expenses->created_at)) }}
                                             </td>
                                             <td>
-                                                {{ ucfirst($expenses->payment_method) }} Card
+                                                {{ ucfirst($expenses->payment_method) }}
                                             </td>
                                             <td>
                                                 ${{ $expenses->amount }}

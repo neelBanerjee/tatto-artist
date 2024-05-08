@@ -26,9 +26,24 @@
                                     <div class="form-group">
                                         <label>Artist Name</label><span class="text-info">(the artist can't be
                                             changed)</span>
-                                        {{-- <input type="text"  placeholder="full name" name="name"
-                                            value="{{ old('name') }}"> --}}
-                                        <span class="form-control">{{ $artwork->user->username }}</span>
+                                        @if (Auth::guard('artists')->check())
+                                            <input type="text" class="form-control" placeholder="Artist Name" name="artist_name" value="{{ $payments->artist->name }}" readonly>
+                                            <input type="hidden" name="user_id" value="{{ Auth::guard('artists')->user()->id; }}">
+                                        @else
+                                            <select name="user_id" class="form-control" value="{{ old('user_id') }}">
+                                                <option value="">select artist</option>
+                                                @foreach ($artists as $artist)
+                                                    <option {{ $artwork->user_id == $artist->id ? 'selected' : '' }}
+                                                        value="{{ $artist->id }}">{{ $artist->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        @endif
+
+                                        @error('artist_id')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">

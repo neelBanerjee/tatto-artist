@@ -60,6 +60,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminCheck'], function () {
     Route::delete('/delete-comment/{id}', [ArtworkController::class, 'deleteComment'])->name('comment.delete');
 
     Route::resource('banners', BannerController::class);
+
+    Route::get('/impersonate/{salesExeID}', [DashboardController::class, 'impersonate'])->name('admin.impersonate');
+    Route::get('/revert-impersonate', [DashboardController::class, 'revertImpersonate'])->name('admin.revert.impersonate');
 });
 
 

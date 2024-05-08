@@ -133,9 +133,15 @@
 
 
                     <li>
-                        <a href="{{ Auth::guard('admins')->check() ? route('admin.logout') : route('artist.logout') }}">
-                            <i class="ti-close"></i> Logout
-                        </a>
+                        @if(session()->has('admin_id'))
+                            <a href="{{ route('admin.revert.impersonate') }}">
+                                <i class="ti-close"></i> Back To Admin Panel
+                            </a>
+                        @else 
+                            <a href="{{ Auth::guard('admins')->check() ? route('admin.logout') : route('artist.logout') }}">
+                                <i class="ti-close"></i> Logout
+                            </a>
+                        @endif    
                     </li>
                 </ul>
             </div>
@@ -168,10 +174,16 @@
                                         <ul>
 
                                             <li>
-                                                <a href="{{ Auth::guard('admins')->check() ? route('admin.logout') : ( Auth::guard('sales')->check() ? route('sales.logout') : route('artist.logout') ) }}">
-                                                    <i class="ti-power-off"></i>
-                                                    <span>Logout</span>
-                                                </a>
+                                                @if(session()->has('admin_id'))
+                                                    <a href="{{ route('admin.revert.impersonate') }}">
+                                                        <i class="ti-close"></i> Back To Admin
+                                                    </a>
+                                                @else 
+                                                    <a href="{{ Auth::guard('admins')->check() ? route('admin.logout') : ( Auth::guard('sales')->check() ? route('sales.logout') : route('artist.logout') ) }}">
+                                                        <i class="ti-power-off"></i>
+                                                        <span>Logout</span>
+                                                    </a>
+                                                @endif    
                                             </li>
                                         </ul>
                                     </div>

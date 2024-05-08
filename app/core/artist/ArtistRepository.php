@@ -24,7 +24,7 @@ class ArtistRepository implements ArtistInterface
 
     public function storeArtistData(array $data, $timeData,$artistData)
     {
-        dd($timeData);
+        //dd($artistData);
 
         if (isset($data['profile_image']) && $data['profile_image'] != null) {
             $content_db = time() . rand(0000, 9999) . "." . $data['profile_image']->getClientOriginalExtension();
@@ -72,6 +72,13 @@ class ArtistRepository implements ArtistInterface
         $timeData['saterday_to'] = isset($timeData['saterday_to']) ? $timeData['saterday_to'] : "17:00";
         
         //Create artist data record in artist_data table
+        if (isset($artistData['shop_logo']) && $artistData['shop_logo'] != null) {
+            $content_logo = time() . rand(0000, 9999) . "." . $artistData['shop_logo']->getClientOriginalExtension();
+            $artistData['shop_logo']->storeAs("public/ShopImage", $content_logo);
+        }else{
+            $content_logo = null;
+        }
+
         $artistData = [
             "artist_id" => $user->id,
             "hourly_rate" => $artistData["hourly_rate"],
@@ -80,12 +87,29 @@ class ArtistRepository implements ArtistInterface
             "walk_in_welcome" => $artistData["walk_in_welcome"],
             "certified_professionals" => $artistData["certified_professionals"],
             "consultation_available" => $artistData["consultation_available"],
-            "language_spoken" => $artistData["language_spoken"],
+            "language_spoken" => implode(',', $artistData["language_spoken"]),
             "parking" => $artistData["parking"],
+            "payment_method" => implode(',', $artistData["payment_method"]),
+            "air_conditioned" => $artistData["air_conditioned"],
             "water_available" => $artistData["water_available"],
             "coffee_available" => $artistData["coffee_available"],
             "mask_worn" => $artistData["mask_worn"],
             "vaccinated_staff" => $artistData["vaccinated_staff"],
+            "wheel_chair_accessible" => $artistData["wheel_chair_accessible"],
+            "bike_parking" => $artistData["bike_parking"],
+            "wifi_available" => $artistData["wifi_available"],
+            "artist_of_the_year" => $artistData["artist_of_the_year"],
+            "insta_handle" => $artistData["insta_handle"],
+            "facebook_handle" => $artistData["facebook_handle"],
+            "youtube_handle" => $artistData["youtube_handle"],
+            "twitter_handle" => $artistData["twitter_handle"],
+            "google_map_api" => $artistData["google_map_api"],
+            "yelp_api" => $artistData["yelp_api"],
+            "shop_percentage" => $artistData["shop_percentage"],
+            "shop_email" => $artistData["shop_email"],
+            "shop_logo" => $content_logo,
+            "shop_name" => $artistData["shop_name"],
+            "shop_address" => $artistData["shop_address"],
         ];
 
         ArtistData::create($artistData);
@@ -109,64 +133,99 @@ class ArtistRepository implements ArtistInterface
         $find =  User::where('id', $id)->first();
         if ($find) {
           
-                 $check_if_time =  TimeTable::where('user_id', $id)->first();
-                 if($check_if_time) {
-                    if(isset($close['tuesday_close']) && $close['tuesday_close'] == "on"){
-                        $timeData['tuesday_from'] ="00:00";
-                        $timeData['tuesday_to'] ="00:00";
-                    }
+                $check_if_time =  TimeTable::where('user_id', $id)->first();
+                if($check_if_time) {
+                if(isset($close['tuesday_close']) && $close['tuesday_close'] == "on"){
+                    $timeData['tuesday_from'] ="00:00";
+                    $timeData['tuesday_to'] ="00:00";
+                }
 
-                    if(isset($close['friday_close']) && $close['friday_close'] == "on"){
-                        $timeData['friday_from'] ="00:00";
-                        $timeData['friday_to'] ="00:00";
-                    }
-                    if(isset($close['saterday_close']) && $close['saterday_close'] == "on"){
-                        $timeData['saterday_from'] ="00:00";
-                        $timeData['saterday_to'] ="00:00";
-                    }
-                    
-                    if(isset($close['sunday_close']) && $close['sunday_close'] == "on"){
-                        $timeData['sunday_from'] ="00:00";
-                        $timeData['sunday_to'] ="00:00";
-                    }
+                if(isset($close['friday_close']) && $close['friday_close'] == "on"){
+                    $timeData['friday_from'] ="00:00";
+                    $timeData['friday_to'] ="00:00";
+                }
+                if(isset($close['saterday_close']) && $close['saterday_close'] == "on"){
+                    $timeData['saterday_from'] ="00:00";
+                    $timeData['saterday_to'] ="00:00";
+                }
+                
+                if(isset($close['sunday_close']) && $close['sunday_close'] == "on"){
+                    $timeData['sunday_from'] ="00:00";
+                    $timeData['sunday_to'] ="00:00";
+                }
 
-                    if(isset($close['monday_close']) && $close['monday_close'] == "on"){
-                        $timeData['monday_from'] ="00:00";
-                        $timeData['monday_to'] ="00:00";
+                if(isset($close['monday_close']) && $close['monday_close'] == "on"){
+                    $timeData['monday_from'] ="00:00";
+                    $timeData['monday_to'] ="00:00";
+                }
+
+                if(isset($close['wednesday_close']) && $close['wednesday_close'] == "on"){
+                    $timeData['wednesday_from'] ="00:00";
+                    $timeData['wednesday_to'] ="00:00";
+                }
+                
+                if(isset($close['thrusday_close']) && $close['thrusday_close'] == "on"){
+                    $timeData['thrusday_from'] ="00:00";
+                    $timeData['thrusday_to'] ="00:00";
+                }
+
+                //dd($timeData);
+                
+                $check_if_time->update($timeData);
+                }else{
+                $timeData['user_id']= $id;
+                TimeTable::create($timeData);
+
+                }
+
+                $check_if_artist_data =  ArtistData::where('artist_id', $id)->first();
+                if($check_if_artist_data) {
+
+                    //Create artist data record in artist_data table
+                    if (isset($artistData['shop_logo']) && $artistData['shop_logo'] != null) {
+                        File::delete(public_path("storage/ShopImage/" . $find->artistData->shop_logo));
+                        $content_logo = time() . rand(0000, 9999) . "." . $artistData['shop_logo']->getClientOriginalExtension();
+                        $artistData['shop_logo']->storeAs("public/ShopImage", $content_logo);
+                    }else{
+                        $content_logo = $find->artistData->shop_logo;
                     }
-
-                    if(isset($close['wednesday_close']) && $close['wednesday_close'] == "on"){
-                        $timeData['wednesday_from'] ="00:00";
-                        $timeData['wednesday_to'] ="00:00";
-                    }
-                    
-                    if(isset($close['thrusday_close']) && $close['thrusday_close'] == "on"){
-                        $timeData['thrusday_from'] ="00:00";
-                        $timeData['thrusday_to'] ="00:00";
-                    }
-
-                    //dd($timeData);
-                    
-                    $check_if_time->update($timeData);
-                 }else{
-                    $timeData['user_id']= $id;
-                    TimeTable::create($timeData);
-
-                 }
-
-                 $check_if_artist_data =  ArtistData::where('artist_id', $id)->first();
-                 if($check_if_artist_data) {
 
                     $artistData = [
-                        "hourly_rate" => "200",
-                        "specialty" => "Armband",
-                        "years_in_trade" => "4",
+                        "hourly_rate" => $artistData["hourly_rate"],
+                        "specialty" => $artistData["specialty"],
+                        "years_in_trade" => $artistData["years_in_trade"],
+                        "walk_in_welcome" => $artistData["walk_in_welcome"],
+                        "certified_professionals" => $artistData["certified_professionals"],
+                        "consultation_available" => $artistData["consultation_available"],
+                        "language_spoken" => implode(',', $artistData["language_spoken"]),
+                        "parking" => $artistData["parking"],
+                        "payment_method" => implode(',', $artistData["payment_method"]),
+                        "air_conditioned" => $artistData["air_conditioned"],
+                        "water_available" => $artistData["water_available"],
+                        "coffee_available" => $artistData["coffee_available"],
+                        "mask_worn" => $artistData["mask_worn"],
+                        "vaccinated_staff" => $artistData["vaccinated_staff"],
+                        "wheel_chair_accessible" => $artistData["wheel_chair_accessible"],
+                        "bike_parking" => $artistData["bike_parking"],
+                        "wifi_available" => $artistData["wifi_available"],
+                        "artist_of_the_year" => $artistData["artist_of_the_year"],
+                        "insta_handle" => $artistData["insta_handle"],
+                        "facebook_handle" => $artistData["facebook_handle"],
+                        "youtube_handle" => $artistData["youtube_handle"],
+                        "twitter_handle" => $artistData["twitter_handle"],
+                        "google_map_api" => $artistData["google_map_api"],
+                        "yelp_api" => $artistData["yelp_api"],
+                        "shop_percentage" => $artistData["shop_percentage"],
+                        "shop_email" => $artistData["shop_email"],
+                        "shop_logo" => $content_logo,
+                        "shop_name" => $artistData["shop_name"],
+                        "shop_address" => $artistData["shop_address"],
                     ];
 
                     //dd($artistData);
                     
                     $check_if_artist_data->update($artistData);
-                 }
+                }
 
             if (isset($data['profile_image']) && $data['profile_image'] != null) {
                 File::delete(public_path("storage/ProfileImage/" . $find->profile_image));

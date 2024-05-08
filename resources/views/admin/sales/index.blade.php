@@ -68,6 +68,9 @@
                                                 class="ti-eye btn btn-sm btn-success"></i></a>
                                             <a href="{{ route('sales.edit', encrypt($sale->id)) }}"><i
                                                     class="ti-pencil btn btn-sm btn-primary"></i></a>
+                                            <a href="{{ route('admin.impersonate', $sale->id) }}">        
+                                                <i class="ti-power-off btn btn-sm btn-info"></i>
+                                            </a>  
                                             <form method="POST"
                                                 action="{{ route('sales.destroy', encrypt($sale->id)) }}"
                                                 class="action-icon">

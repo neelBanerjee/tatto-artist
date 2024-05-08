@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Expenses;
 
 use App\Http\Controllers\Controller;
+use App\core\artist\ArtistInterface;
 use Illuminate\Http\Request;
 use App\Models\ExpenseModel;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ExpensesController extends Controller
 {
+    private $artistInterface;
+
+    public function __construct(ArtistInterface $artistInterface){
+        $this->artistInterface = $artistInterface;
+    }
+
     public function getExpenses(Request $request){
         if (Auth::guard('artists')->check()){
             $expense = ExpenseModel::where('user_id',Auth::guard('artists')->user()->id)->get();
@@ -21,7 +28,8 @@ class ExpensesController extends Controller
     }
 
     public function AddexpensesForm(Request $request){
-        return view('admin.expense.create');
+        $data['artists'] = $this->artistInterface->getAllArtist();
+        return view('admin.expense.create',$data);
     }
 
     public function formatDate($requestDate){
@@ -39,14 +47,14 @@ class ExpensesController extends Controller
             'expense_items.required' => 'Please select expense',
         ]);
 
-        if(Auth::guard('artists')->check()){
-            $userid = Auth::guard('artists')->user()->id;
-        }else{
-            $userid = Auth::guard('admins')->user()->id;
-        }
+        // if(Auth::guard('artists')->check()){
+        //     $userid = Auth::guard('artists')->user()->id;
+        // }else{
+        //     $userid = Auth::guard('admins')->user()->id;
+        // }
 
         $emodel = new ExpenseModel();
-        $emodel->user_id                                       = $userid;
+        $emodel->user_id                                       = $request['user_id'];
         $emodel->transaction_date                              = $this->formatDate($request['transaction_date']);
         $emodel->payment_method                                = $request['payment_method'];
         $emodel->amount                                        = $request['amount'];
@@ -60,8 +68,9 @@ class ExpensesController extends Controller
     }
 
     public function editexpensesForm(Request $request,$id){
+        $artists = $this->artistInterface->getAllArtist();
         $expenses = ExpenseModel::where('id',decrypt($id))->first();
-        return view('admin.expense.edit',compact('expenses'));
+        return view('admin.expense.edit',compact('expenses','artists'));
     }
 
     public function editexpensesPost(Request $request,$id){
@@ -73,14 +82,14 @@ class ExpensesController extends Controller
             'expense_items.required' => 'Please select expense',
         ]);
 
-        if(Auth::guard('artists')->check()){
-            $userid = Auth::guard('artists')->user()->id;
-        }else{
-            $userid = Auth::user()->id;
-        }
+        // if(Auth::guard('artists')->check()){
+        //     $userid = Auth::guard('artists')->user()->id;
+        // }else{
+        //     $userid = Auth::user()->id;
+        // }
 
         $emodel = ExpenseModel::find(decrypt($id));
-        $emodel->user_id                                       = $userid;
+        $emodel->user_id                                       = $request['user_id'];;
         $emodel->transaction_date                              = $this->formatDate($request['transaction_date']);
         $emodel->payment_method                                = $request['payment_method'];
         $emodel->amount                                        = $request['amount'];

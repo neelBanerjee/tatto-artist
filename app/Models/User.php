@@ -54,7 +54,12 @@ class User extends Authenticatable
     }
 
     public function artistData() {
-        return  $this->hasOne(ArtistData::class, 'user_id', 'id'); 
+        return  $this->hasOne(ArtistData::class, 'artist_id', 'id'); 
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     public function bannerImages() {

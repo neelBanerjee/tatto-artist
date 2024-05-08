@@ -436,7 +436,7 @@
     
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Consultations Available</label>
+                                        <label>Coffee Available</label>
                                         <select name="coffee_available" class="form-control" value="{{ old('coffee_available') }}">
                                             <option selected disabled>select option</option>
                                             <option value="yes">Yes</option>
@@ -487,6 +487,235 @@
                                 </div>
     
                             </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Wheel Chair Accessible</label><span class="text-danger">*</span>
+                                        <select name="wheel_chair_accessible" class="form-control" value="{{ old('mask_worn') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('wheel_chair_accessible')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Bike Parking</label>
+                                        <select name="bike_parking" class="form-control" value="{{ old('bike_parking') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('bike_parking')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Wifi Available</label><span class="text-danger">*</span>
+                                        <select name="wifi_available" class="form-control" value="{{ old('wifi_available') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('wifi_available')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Artist of The Year</label>
+                                        <select name="artist_of_the_year" class="form-control" value="{{ old('artist_of_the_year') }}">
+                                            <option selected disabled>select option</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        @error('artist_of_the_year')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Instagram Account</label><span class="text-danger">*</span>
+                                        <input type="url" class="form-control" id="insta_handle" placeholder="Instagram Account" name="insta_handle">
+                                        @error('insta_handle')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Facebook Account</label><span class="text-danger">*</span>
+                                        <input type="url" class="form-control" id="facebook_handle" placeholder="facebook_handle" name="facebook_handle">
+                                        @error('facebook_handle')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>YouTube Account</label><span class="text-danger">*</span>
+                                        <input type="url" class="form-control" id="youtube_handle" placeholder="YouTube Account" name="youtube_handle">
+                                        @error('youtube_handle')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>X - Twitter</label><span class="text-danger">*</span>
+                                        <input type="url" class="form-control" id="twitter_handle" placeholder="X - Twitter" name="twitter_handle">
+                                        @error('twitter_handle')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Google Map API</label><span class="text-danger">*</span>
+                                        <input type="text" class="form-control" id="google_map_api" placeholder="Google Map API" name="google_map_api">
+                                        @error('google_map_api')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Yelp API</label><span class="text-danger">*</span>
+                                        <input type="text" class="form-control" id="yelp_api" placeholder="Yelp API" name="yelp_api">
+                                        @error('yelp_api')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Shop Logo</label><span class="text-danger">*</span>
+                                        <input type="file" class="form-control" name="shop_logo"
+                                            value="{{ old('shop_logo') }}">
+                                        @error('shop_logo')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Shop Percentage</label><span class="text-danger">*</span>
+                                        <input type="text" class="form-control" id="shop_percentage" placeholder="Shop Percentage" name="shop_percentage">
+                                        @error('shop_percentage')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Shop Email</label><span class="text-danger">*</span>
+                                        <input type="email" class="form-control" id="shop_email" placeholder="Shop Email" name="shop_email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"> 
+                                        @error('shop_email')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>    
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Shop Name</label><span class="text-danger">*</span>
+                                        <input type="text" class="form-control" id="shop_name" placeholder="Shop Name" name="shop_name">
+                                        @error('shop_name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Shop Address</label><span class="text-danger">*</span>
+                                        <input type="text" class="form-control" id="shop_address" placeholder="Shop Address" name="shop_address"> 
+                                        @error('shop_address')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>    
+
 
                             <div class="row">
 
