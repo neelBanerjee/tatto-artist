@@ -5,6 +5,8 @@ use App\Models\BannerImage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Image;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class BannerRepository implements BannerInterface {
     public function getAllBanners(){
@@ -27,9 +29,31 @@ class BannerRepository implements BannerInterface {
     public function storeBannerImage($data) {
       //  echo "<pre>"; print_r($data); die;
         if (isset($data['banner_image']) && $data['banner_image'] != null) {
-            $content_db = time().rand(0000, 9999) . "." . $data['banner_image']->getClientOriginalExtension();
-            $data['banner_image']->storeAs("public/BannerImage", $content_db);
-            $data['banner_image'] = $content_db;
+            //dd($data);
+            // Retrieve the image from request
+            $imageFile = $data['banner_image'];
+            
+            if(!empty($imageFile)){
+                // create image manager with desired driver
+                $manager = new ImageManager(new Driver()); 
+
+                // read image from file system
+                $image = $manager->read($imageFile); 
+
+                // Create a unique filename
+                $filename = time().rand(0000, 9999) . "." . $imageFile->getClientOriginalExtension();
+
+                //Resize the image before save
+                $image  = $image->resize(370, 246);
+
+                //dd(public_path());
+
+                // Compress and save the image in public directory
+                $path = public_path('storage/BannerImage/' . $filename);
+                $image->save($path, 60); // 60 is the quality
+            }
+
+            $data['banner_image'] = $filename;
         }
         return BannerImage::create($data);
     }

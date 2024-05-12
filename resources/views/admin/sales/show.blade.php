@@ -5,27 +5,27 @@
         <div class="col-lg-11">
             <div class="card">
                 <div class="card-title">
-                    <h4> Artist Details</h4>
+                    <h4> Sales Details</h4>
                     @if (Session::has('msg'))
                         <p class="alert alert-info">{{ Session::get('msg') }}</p>
                     @endif
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
-                        {{-- <form action="{{ route('artists.update', encrypt($artist->id)) }}" method="POST" enctype="multipart/form-data">
+                        {{-- <form action="{{ route('saless.update', encrypt($sales->id)) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT') --}}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Artist Name</label>
-                                    <span class="form-control">{{ $artist->name }}</span>
+                                    <label>Sales Name</label>
+                                    <span class="form-control">{{ $sales->name }}</span>
 
                                 </div>
 
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <span class="form-control">{{ $artist->username }}</span>
+                                    <span class="form-control">{{ $sales->username }}</span>
 
                                 </div>
                             </div>
@@ -33,14 +33,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <span class="form-control">{{ $artist->email }}</span>
+                                    <span class="form-control">{{ $sales->email }}</span>
 
                                 </div>
 
                                 <div class="form-group">
                                     <label>Phone</label>
 
-                                    <span class="form-control">{{ $artist->phone }}</span>
+                                    <span class="form-control">{{ $sales->phone }}</span>
 
                                 </div>
                             </div>
@@ -51,38 +51,10 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Address</label>
-                                    <span class="form-control">{{ $artist->address }}</span>
-
-                                </div>
-
-                                <div class="form-group">
-
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Zipcode</label><span class="text-danger">*</span>
-                                    <input type="number" class="form-control" placeholder="zipcode" name="zipcode"
-                                        value="{{ $artist->zipcode }}">
-                                    @error('zipcode')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label>Current Profile Image</label>
-                                    @if (!empty($artist->profile_image) && File::exists(public_path('storage/ProfileImage/' . $artist->profile_image)))
+                                    @if (!empty($sales->profile_image) && File::exists(public_path('storage/ProfileImage/' . $sales->profile_image)))
                                         <img style="height: 82px; width: 82px;"
-                                            src="{{ asset('storage/ProfileImage/' . $artist->profile_image) }}"
+                                            src="{{ asset('storage/ProfileImage/' . $sales->profile_image) }}"
                                             alt="">
                                     @else
                                         <img style="height: 82px; width: 82px;" src="{{ asset('noimg.png') }}"
@@ -90,23 +62,6 @@
                                     @endif
                                 </div>
 
-                                <div class="form-group">
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Current Banner Image</label>
-                                    @if (!empty($artist->banner_image) && File::exists(public_path('storage/BannerImage/' . $artist->banner_image)))
-                                        <img style="height: 82px; width: 82px;"
-                                            src="{{ asset('storage/BannerImage/' . $artist->banner_image) }}"
-                                            alt="">
-                                    @else
-                                        <img style="height: 82px; width: 82px;" src="{{ asset('noimg.png') }}"
-                                            alt="">
-                                    @endif
-                                </div>
                                 <div class="form-group">
 
                                 </div>
@@ -116,12 +71,12 @@
 
                     </div>
                 </div>
-                @if ($artist->artworks->count() > 0)
+                @if ($sales->artworks->count() > 0)
                     <h4>All artworks</h4>
                     <div class="row">
 
 
-                        @foreach ($artist->artworks as $item)
+                        @foreach ($sales->artworks as $item)
                             <div class="col-md-3">
                                 @if (!empty($item->image) && File::exists(public_path('storage/ArtworkImage/' . $item->image)))
                                     <div>

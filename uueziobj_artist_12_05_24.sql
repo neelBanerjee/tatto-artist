@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2024 at 06:47 PM
+-- Generation Time: May 12, 2024 at 03:17 PM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.16
 
@@ -67,17 +67,40 @@ CREATE TABLE `artist_data` (
   `walk_in_welcome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
   `certified_professionals` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
   `consultation_available` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
-  `language_spoken` varchar(255) NOT NULL DEFAULT 'English',
+  `language_spoken` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'English',
   `parking` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
-  `payment_method` varchar(255) NOT NULL DEFAULT 'Cash',
+  `payment_method` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Cash',
   `air_conditioned` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
   `water_available` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
   `coffee_available` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'no',
-  `mask_worn` varchar(100) NOT NULL DEFAULT 'yes',
-  `vaccinated_staff` varchar(100) NOT NULL DEFAULT 'yes',
+  `mask_worn` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
+  `vaccinated_staff` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'yes',
+  `wheel_chair_accessible` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'yes',
+  `bike_parking` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'no',
+  `wifi_available` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'yes',
+  `artist_of_the_year` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'no',
+  `insta_handle` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `facebook_handle` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `youtube_handle` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `twitter_handle` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `google_map_api` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `yelp_api` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `shop_logo` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `shop_percentage` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '40',
+  `shop_email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `shop_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `shop_address` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `artist_data`
+--
+
+INSERT INTO `artist_data` (`id`, `artist_id`, `hourly_rate`, `specialty`, `years_in_trade`, `walk_in_welcome`, `certified_professionals`, `consultation_available`, `language_spoken`, `parking`, `payment_method`, `air_conditioned`, `water_available`, `coffee_available`, `mask_worn`, `vaccinated_staff`, `wheel_chair_accessible`, `bike_parking`, `wifi_available`, `artist_of_the_year`, `insta_handle`, `facebook_handle`, `youtube_handle`, `twitter_handle`, `google_map_api`, `yelp_api`, `shop_logo`, `shop_percentage`, `shop_email`, `shop_name`, `shop_address`, `created_at`, `updated_at`) VALUES
+(2, 38, '18', '41', 1971, 'no', 'no', 'yes', 'Spanish,French,Italian,Chinese,Farsi', 'no', 'CC,Venomo,CashApp,Paypal,ApplePay,GooglePay', 'yes', 'yes', 'no', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'https://www.fifoqutafapi.net', 'https://www.qod.cm', 'https://www.gakur.org.uk', 'https://www.nijymexo.org.au', 'Sit sit voluptas d', 'Ad est dicta necessi', NULL, 'Magna quo rerum volu', 'zimepixor@mailinator.com', 'Paki Neal', 'Sed at ad eaque nesc', '2024-05-05 19:48:44', '2024-05-05 19:48:44'),
+(3, 39, '50', '9', 2004, 'yes', 'yes', 'yes', 'Spanish,Farsi', 'yes', 'CC,Zelle,CashApp,Paypal,ApplePay,GooglePay', 'yes', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'https://www.qilox.mobi', 'https://www.sejyvek.us', 'https://www.namenup.com', 'https://www.waheradegevyj.in', 'Qui tempor accusamus', 'Et eum nisi laudanti', '17149915612003.jpg', 'In est debitis cillu', 'neel.bandyopadhyay@codeclouds.co.in', 'Nina Lott', 'Laudantium dolor qu', '2024-05-05 20:02:15', '2024-05-06 13:43:18');
 
 -- --------------------------------------------------------
 
@@ -115,7 +138,7 @@ INSERT INTO `artworks` (`id`, `user_id`, `title`, `total_view`, `style_id`, `sub
 (25, 20, 'caymus_022524_2', 0, 1, 38, 6, '2024-02-25 12:18:06', '2024-02-25 12:18:06', 'caymus_022524_2.webp', '90802', 'United States of America'),
 (28, 18, 'banerjee_neel_030124_1', 0, 3, 3, 3, '2024-03-01 17:30:14', '2024-03-01 17:30:14', 'banerjee_neel_030124_1.png', '1234567', 'United States of America'),
 (29, 33, 'test_artist_1_042324_1', 0, 3, 2, 3, '2024-04-23 05:36:47', '2024-04-23 05:36:47', 'test_artist_1_042324_1.png', '10016', 'United States of America'),
-(30, 34, 'test_artist_2_042324_1', 0, 1, 2, 1, '2024-04-23 07:44:22', '2024-04-23 07:44:22', 'test_artist_2_042324_1.png', '11201', 'United States of America');
+(30, 34, 'test_artist_2_042324_1', 0, 1, 2, 1, '2024-04-23 07:44:22', '2024-05-08 02:23:33', 'test_artist_2_042324_1.png', '11201', 'United States of America');
 
 -- --------------------------------------------------------
 
@@ -143,11 +166,8 @@ INSERT INTO `banner_images` (`id`, `banner_image`, `user_id`, `description`, `fr
 (9, '1708883305673.jpg', 20, NULL, NULL, NULL, '2024-02-25 12:18:25', '2024-02-25 12:18:25'),
 (10, '17089752242680.PNG', 18, NULL, NULL, NULL, '2024-02-26 13:50:24', '2024-02-26 13:50:24'),
 (11, '17144701766286.png', 33, NULL, NULL, NULL, '2024-04-30 04:12:56', '2024-04-30 04:12:56'),
-(12, '17144701879509.jpg', 33, NULL, NULL, NULL, '2024-04-30 04:13:07', '2024-04-30 04:13:07'),
 (13, '17144702234988.png', 34, NULL, NULL, NULL, '2024-04-30 04:13:43', '2024-04-30 04:13:43'),
-(14, '17144702343324.jpg', 34, NULL, NULL, NULL, '2024-04-30 04:13:54', '2024-04-30 04:13:54'),
-(15, '17149286931109.jpeg', 34, 'rtrt', '2024-05-05', '2024-05-31', '2024-05-05 11:34:53', '2024-05-05 11:34:53'),
-(16, '17149348091979.jpg', 34, 'test description....', '2024-05-06', '2024-05-13', '2024-05-05 13:16:49', '2024-05-05 13:16:49');
+(15, '17149286931109.jpeg', 34, 'rtrt', '2024-05-05', '2024-05-31', '2024-05-05 11:34:53', '2024-05-05 11:34:53');
 
 -- --------------------------------------------------------
 
@@ -169,7 +189,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `artwork_id`, `user_id`, `comment`, `created_at`, `updated_at`) VALUES
-(1, 2, 9, 'test comment', NULL, NULL),
+(1, 2, 12, 'test comment', NULL, NULL),
 (5, 20, 14, 'jsdbhfjbs,dfbj,sdbf', NULL, NULL),
 (6, 25, 20, 'This is a picture of my son near a truck working with me', NULL, NULL),
 (10, 28, 18, 'cool artwork...!', '2024-03-01 23:06:35', NULL);
@@ -197,11 +217,12 @@ CREATE TABLE `expense` (
 --
 
 INSERT INTO `expense` (`id`, `user_id`, `transaction_date`, `payment_method`, `amount`, `expense_items`, `note`, `created_at`, `updated_at`) VALUES
-(2, 1, '2024-02-12', 'Zelle', '100', 'tools', 'this is a test note', '2024-02-12 00:43:00', '2024-02-15 01:50:38'),
+(2, 34, '2024-02-12', 'Zelle', '100', 'tools', 'this is a test note', '2024-02-12 00:43:00', '2024-05-08 02:34:00'),
 (3, 20, '2024-02-25', 'PayPal', '200', 'ink', 'ink restock', '2024-02-25 00:43:49', NULL),
 (4, 20, '2024-02-21', 'Check', '500', 'clothing', 'new shirts', '2024-02-25 00:45:15', NULL),
 (5, 18, '2024-02-27', 'Credit Card', '4524', 'clothing', '45454', '2024-02-26 01:56:43', '2024-03-02 00:07:02'),
-(6, 18, '2024-02-29', 'Debit Card', '100', 'tools', 'This is a test creation.', '2024-03-02 00:08:47', NULL);
+(6, 18, '2024-02-29', 'Debit Card', '100', 'tools', 'This is a test creation.', '2024-03-02 00:08:47', NULL),
+(7, 34, '2024-05-08', 'Cash', '100', 'advertising', 'This is a test note.', '2024-05-08 02:34:26', '2024-05-08 02:38:07');
 
 -- --------------------------------------------------------
 
@@ -542,7 +563,7 @@ CREATE TABLE `quotes` (
 INSERT INTO `quotes` (`id`, `artist_id`, `color`, `description`, `size`, `link_send_status`, `pdf_path`, `when_get_tattooed`, `reference_image`, `budget`, `availability`, `front_back_view`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 33, 'blue', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\n', 'L', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 34, 'Red', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\n', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 30, 'Red', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\n', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(3, 27, 'Red', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\n', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, 18, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -883,7 +904,9 @@ INSERT INTO `time_tables` (`id`, `user_id`, `sunday_from`, `sunday_to`, `monday_
 (18, 27, '00:00', '00:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '00:00', '00:00', '2024-03-14 17:40:18', '2024-03-14 19:04:45'),
 (21, 33, '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '2024-04-23 05:22:08', '2024-04-23 05:22:08'),
 (22, 34, '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '2024-04-23 07:41:53', '2024-04-23 07:41:53'),
-(23, 35, '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '2024-05-03 06:02:33', '2024-05-03 06:02:33');
+(23, 35, '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '09:00', '17:00', '2024-05-03 06:02:33', '2024-05-03 06:02:33'),
+(24, 38, '20:40', '01:44', '09:52', '10:42', '08:20', '23:35', '15:06', '17:26', '19:32', '22:27', '10:34', '00:03', '06:25', '10:02', '2024-05-05 19:48:44', '2024-05-05 19:48:44'),
+(25, 39, '05:54', '19:50', '06:43', '21:29', '07:06', '10:28', '18:07', '23:14', '01:06', '02:57', '17:34', '13:16', '20:36', '00:01', '2024-05-05 20:02:15', '2024-05-05 20:02:15');
 
 -- --------------------------------------------------------
 
@@ -973,10 +996,12 @@ INSERT INTO `users` (`id`, `name`, `username`, `phone`, `address`, `address2`, `
 (23, 'john', 'john', '9999999999', NULL, NULL, '', '', '', '1234556', NULL, NULL, '17089868644834.PNG', NULL, 'john@gmail.com', NULL, '$2y$12$0ii8819FFEpWaZvte3SG0udPo7Q2fGQvBEyZ036ygxK9kCK4fqWZ.', 1, NULL, 0, '2024-02-26 16:48:14', '2024-03-14 16:29:19', 'Customer'),
 (24, 'aaaaaa', 'aaaaaaaa', '9999999999', NULL, NULL, '', '', '', '123456', NULL, NULL, NULL, NULL, 'a@gmail.com', NULL, '$2y$12$S0vMO0fm1NeF8EmJ4ufQleV.EJhZLVixW6.y/X18ewZ6pZUV8fVny', 1, NULL, 0, '2024-02-26 16:56:00', '2024-03-14 16:24:46', 'artist'),
 (26, 'test test', 'admin', '1234567890', '10600 Highland Springs Avenue', NULL, '', '', '', '92223', NULL, NULL, NULL, NULL, 'neel.bandyopadhyay@codeclouds.co.in', NULL, '$2y$12$.99yrVUKNZ9iSzum2eViPOb./m/AivWIpgu4gKGDcqs6eoP4a8cme', 1, NULL, 0, '2024-03-09 09:16:13', '2024-03-09 09:16:13', 'artist'),
-(27, 'test test', 'neel430', '1234567890', '10600 Westminster Boulevard, Westminster, CO, USA', '10370 Bel Air Dr', 'United States', 'Colorado', 'Westminster', '80020', '39.8906637', '-105.0654224', NULL, NULL, 'neel.bandyopadhyay@ss.co.in', NULL, '$2y$12$1RkBqcTtVvpUkyw5oxExUendirEufQhgC7b6jEhzsvT4Xs116Gjca', 1, NULL, 0, '2024-03-14 17:40:18', '2024-03-24 11:29:53', 'artist'),
-(30, 'test test', 'neelSales', '1234567890', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'neel.bandyopadhyays@codeclouds.co.in', NULL, '$2y$12$vp7SbO22OhMYpGM3xq8ROuArZGDh4iSqEHyJqFxj0fDmdvSqcU5aW', 1, NULL, 0, '2024-04-23 03:30:50', '2024-04-23 03:30:50', 'sales'),
+(27, 'test test', 'neel430', '1234567890', '10600 Westminster Boulevard, Westminster, CO, USA', '10370 Bel Air Dr', 'United States', 'Colorado', 'Westminster', '80020', '39.8906637', '-105.0654224', NULL, NULL, 'banerjeeneel.live@gmail.com', NULL, '$2y$12$1RkBqcTtVvpUkyw5oxExUendirEufQhgC7b6jEhzsvT4Xs116Gjca', 1, NULL, 0, '2024-03-14 17:40:18', '2024-03-24 11:29:53', 'artist'),
+(30, 'test test', 'neelSales', '1234567890', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '17155270032013.png', NULL, 'neel.bandyopadhyays@codeclouds.co.in', NULL, '$2y$12$vp7SbO22OhMYpGM3xq8ROuArZGDh4iSqEHyJqFxj0fDmdvSqcU5aW', 1, NULL, 0, '2024-04-23 03:30:50', '2024-05-12 09:46:43', 'sales'),
 (33, 'Test Artist', 'test_artist_1', '9999999999', '240 East 38th Street, New York, NY, USA', NULL, NULL, NULL, NULL, '10016', NULL, NULL, NULL, NULL, 'testartist@domain.com', NULL, '$2y$12$vrbuqX9C2C4sFAdI31Z/COjOlJnnDkzBF5G4Ro4nu/8SLoJbemfpO', 1, NULL, 30, '2024-04-23 05:22:08', '2024-04-23 05:22:08', 'artist'),
-(34, 'Test Artist 2', 'test_artist_2', '9999999999', '360 Adams Street, Brooklyn, NY, USA', NULL, NULL, NULL, NULL, '11201', NULL, NULL, NULL, NULL, 'testartist2@domain.com', NULL, '$2y$12$x4Qclfxdvf3W9OMJRzd/dechlSXlb2l9qkRN5HQm0TEHIQH2TMdZC', 1, NULL, 30, '2024-04-23 07:41:53', '2024-04-23 07:41:53', 'artist');
+(34, 'Test Artist 2', 'test_artist_2', '9999999999', '360 Adams Street, Brooklyn, NY, USA', NULL, NULL, NULL, NULL, '11201', NULL, NULL, NULL, NULL, 'testartist2@domain.com', NULL, '$2y$12$x4Qclfxdvf3W9OMJRzd/dechlSXlb2l9qkRN5HQm0TEHIQH2TMdZC', 1, NULL, 30, '2024-04-23 07:41:53', '2024-04-23 07:41:53', 'artist'),
+(38, 'Ulysses Hurst', 'dikylasez', '1336177738', '123 William Street, New York, NY, USA', NULL, NULL, NULL, NULL, '10038', NULL, NULL, '17149583234171.png', '17149583234674.jpg', 'manyq@mailinator.com', NULL, '$2y$12$e11OgkHPHSNvP.dyKkpzHu8Ew.SqJXrsP8w5abX38ok9GBdZ03dIq', 1, NULL, 0, '2024-05-05 19:48:44', '2024-05-05 19:48:44', 'artist'),
+(39, 'test test', 'tihid', '1234567890', '10600 Highland Springs Avenue', '10370 Bel Air Dr', 'United States', 'California', 'Beaumont', '92223', NULL, NULL, '17149591351762.png', '17149591356405.jpg', 'muneke@mailinator.com', NULL, '$2y$12$4.2ArDuSJ8Kio6So4oiBc.UYzaS2NXRxAkmLmG2yPclwB4wY5S9YK', 1, NULL, 0, '2024-05-05 20:02:15', '2024-05-06 13:43:18', 'artist');
 
 --
 -- Indexes for dumped tables
@@ -1126,7 +1151,7 @@ ALTER TABLE `appointments`
 -- AUTO_INCREMENT for table `artist_data`
 --
 ALTER TABLE `artist_data`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `artworks`
@@ -1138,7 +1163,7 @@ ALTER TABLE `artworks`
 -- AUTO_INCREMENT for table `banner_images`
 --
 ALTER TABLE `banner_images`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -1150,7 +1175,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1216,7 +1241,7 @@ ALTER TABLE `tatto_form`
 -- AUTO_INCREMENT for table `time_tables`
 --
 ALTER TABLE `time_tables`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `total_views`
@@ -1228,7 +1253,7 @@ ALTER TABLE `total_views`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

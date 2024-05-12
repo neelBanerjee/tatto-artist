@@ -50,8 +50,9 @@
                         <li><a href="{{ route('artists.profile') }}"><i class="ti-user"></i>Profile </a></li>
                         <li><a href="{{ url('/user/artist-profile#profileHours') }}"><i class="ti-time"></i>Hours </a></li>
                     @else
-
-                        <li><a href="{{ route('admin.customers') }}"><i class="ti-desktop"></i>Customers </a></li>
+                        @if (Auth::guard('admins')->check())
+                            <li><a href="{{ route('admin.customers') }}"><i class="ti-desktop"></i>Customers </a></li>
+                        @endif    
 
                         <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Artist Management <span
                                     class="sidebar-collapse-icon ti-angle-down"></span></a>

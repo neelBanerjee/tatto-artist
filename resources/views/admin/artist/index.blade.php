@@ -30,10 +30,10 @@
                             </thead>
                             <tbody>
                                 @if(count($artists)>0)
-                                    @foreach ($artists as $artist)
+                                    @foreach ($artists as $index => $artist)
                                 
                                         <tr>
-                                            <td>#</td>
+                                            <td>{{ $index+1 }}</td>
                                             <td>
                                                 {{ $artist->name }}
                                                 
