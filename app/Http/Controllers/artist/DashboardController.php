@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\Style;
 use App\Models\Artwork;
 
 class DashboardController extends Controller
@@ -34,6 +35,10 @@ class DashboardController extends Controller
 
    public function profile() {
     $data['artist'] = $this->artistInterface->getSingleArtist(auth()->guard('artists')->id());
+    $data['artistData'] = @$data['artist']->artistData;
+    $data['languageSpoken'] = explode(',', @$data['artistData']->language_spoken);
+    $data['PaymentMethod'] = explode(',', @$data['artistData']->payment_method);
+    $data['styles'] = Style::orderBy('id', 'asc')->get();
     // dd($data);
     if ($data['artist'] == 'Not Found') {
         return back()->with('msg', 'No artist found!');
